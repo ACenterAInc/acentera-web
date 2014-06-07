@@ -1,0 +1,71 @@
+<div id="menu">
+
+    {{#link-to "main.index" tagName="li" }}
+        <a {{bind-attr href="view.href"}}><i class=""></i>{{i18n "leftmenu.project_list"}}</a>
+    {{/link-to}}
+
+
+
+    {{#if view.model.isConfigured}}
+
+        <div data-parent="#menu" data-toggle="collapse" class="btn-metis-5" >
+            Dashboards
+                <span class="pull-right">
+                <!--<i class="icon-angle-left"></i>-->
+                    </span>
+        </div>
+
+        {{#link-to "project.index" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>Overview</a>
+        {{/link-to}}
+
+        <div data-parent="#menu" data-toggle="collapse" class="btn-metis-5" >
+            Settings
+        <span class="pull-right">
+            <!--<i class="icon-angle-left"></i>-->
+        </span>
+        </div>
+
+
+        {{#link-to "project.servers" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>Servers</a>
+        {{/link-to}}
+
+        {{#link-to "project.custom" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>Custom</a>
+        {{/link-to}}
+
+
+    {{/if}}
+
+    <div data-parent="#menu" data-toggle="collapse" class="btn-metis-5" >
+        Administration
+            <span class="pull-right">
+                <!--<i class="icon-angle-left"></i>-->
+            </span>
+    </div>
+
+    {{#if view.model.ProjectAdmin}}
+        {{#link-to "project.providers" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>Cloud Providers</a>
+        {{/link-to}}
+
+        {{#link-to "project.sshkeys" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>SSH Keys</a>
+        {{/link-to}}
+
+        {{#link-to "project.quotas" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>Quotas</a>
+        {{/link-to}}
+
+        {{#link-to "project.iams" tagName="li"}}
+            <a {{bind-attr href="view.href"}}><i class=""></i>IAM</a>
+        {{/link-to}}
+    {{/if}}
+
+    {{#link-to "project.account" tagName="li"}}
+        <a {{bind-attr href="view.href"}}><i class=""></i>Account</a>
+    {{/link-to}}
+
+
+</div>

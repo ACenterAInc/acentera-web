@@ -1,0 +1,16 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+#Example of an added route
+#POST    /api/project/:project_id/databases/:database_id/server/:server_id/destroyserver      controllers.MyController.destroyDatabaseSlaves(project_id: Long, database_id : Long, server_id : Long)
+
+#An example of how to override a route
+#GET      /api/project/:project_id                       controllers.Project.getProjectById(project_id : Long)
+
+->      /                                               acentera.Routes
+
+GET     /assets/*file                                   controllers.Assets.at(path="/public", file)
+
