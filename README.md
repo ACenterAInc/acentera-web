@@ -18,7 +18,7 @@ Stick with us on HipChat :  https://www.hipchat.com/gj2n23n8e
     * Team cooperation
     * Admin interface *not yet anything implemented, but support is there*
 
-Please add your [Feature Requests](http://www.acentera.com/features/)
+Please add your [Feature Requests](http://www.acentera.com/community-features/)
 
 Feel free to contribute by providing a pull request if you wish to create a "command line client"
 
