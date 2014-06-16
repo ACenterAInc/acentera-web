@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: org.jasypt:jasypt:1.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.jasypt/jasypt/jars/jasypt-1.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

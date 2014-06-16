@@ -27,9 +27,9 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 
 resolvers += "Spy Repository" at "http://files.couchbase.com/maven2"
 
-addSbtPlugin("com.acentera" % "acentera-emberjs" % "1.0")
 
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+
 
 // The Play plugin
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.0")
@@ -47,3 +47,6 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.3.0")
 //addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.0.0")
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.0.0")
+
+
+addSbtPlugin("com.acentera" % "acentera-emberjs" % "1.0")

@@ -33,7 +33,7 @@ import models.db.acentera.impl.ProjectProvidersImpl;
 import org.hibernate.annotations.Where;
 import play.Logger;
 import utils.security.TagArrayBasePermission;
-
+import javax.persistence.Entity;
 import javax.persistence.*;
 import java.util.*;
 

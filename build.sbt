@@ -13,28 +13,31 @@ organization := "com.acentera"
 //Mixed
 //JavaThenScala
 //Mixed
-//javacOptions ++= Seq("-source", "1.7")
 
 
 //watchSources :=  (baseDirectory / "conf") map {  _ /  "routes" }
 
-lazy val acentera = (project in file("modules/acentera")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
-   emberJsPrefix:= "acentera"
+lazy val acentera = (project in file("conf/modules/acentera")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
+   emberJsPrefix:= "acentera",
+   javacOptions ++= Seq("-source", "1.7")
 )
 
 
+
 lazy val root = (project in file(".")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
-   emberJsPrefix:= "user"
+   emberJsPrefix:= "user",
+   javacOptions ++= Seq("-source", "1.7")
 ).dependsOn(acentera)
 
 scalaVersion := "2.11.1"
 
 libraryDependencies ++= Seq(
   javaJdbc,
-  javaEbean,
+  //javaEbean,
   cache,
   javaWs,
   "org.jasypt" % "jasypt" % "1.7",
+  "joda-time" % "joda-time" % "2.3",
   "org.apache.shiro" % "shiro-core" % "1.2.0",
   "org.apache.commons" % "commons-email" % "1.3.2",
   "com.google.code.maven-play-plugin.net.tanesha.recaptcha4j" % "recaptcha4j" % "0.0.8",

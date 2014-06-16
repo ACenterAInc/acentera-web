@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: org.scala-sbt:incremental-compiler:0.13.5:provided">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.scala-sbt/incremental-compiler/jars/incremental-compiler-0.13.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
