@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24af7b63-cbd1-4b8c-96dc-e85484148207" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/templates/base/common/models/databases.js" afterPath="$PROJECT_DIR$/app/assets/templates/custom/common/models/databases.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/templates/base/user/controllers/routes_user.js" afterPath="$PROJECT_DIR$/app/assets/templates/custom/user/controllers/routes_user.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/templates/base/user/views/project/custom.handlebars" afterPath="$PROJECT_DIR$/app/assets/templates/custom/user/views/project/custom.handlebars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/templates/base/user/views/project/leftmenu.handlebars" afterPath="$PROJECT_DIR$/app/assets/templates/custom/user/views/project/leftmenu.handlebars" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.sbt" afterPath="$PROJECT_DIR$/build.sbt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tutorial/index.html" />
     </list>
     <ignored path="acentera-web.iws" />
     <ignored path=".idea/workspace.xml" />
