@@ -17,7 +17,7 @@ organization := "com.acentera"
 
 //watchSources :=  (baseDirectory / "conf") map {  _ /  "routes" }
 
-lazy val acentera = (project in file("conf/modules/acentera")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
+lazy val acentera = (project in file("modules/acentera")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
    emberJsPrefix:= "acentera",
    javacOptions ++= Seq("-source", "1.7")
 )
@@ -29,13 +29,14 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala).enablePlugins(Pl
    javacOptions ++= Seq("-source", "1.7")
 ).dependsOn(acentera)
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.10.4"
+//2.11.1"
 
 libraryDependencies ++= Seq(
   javaJdbc,
   //javaEbean,
   cache,
-  javaWs,
+  //javaWs,
   "org.jasypt" % "jasypt" % "1.7",
   "joda-time" % "joda-time" % "2.3",
   "org.apache.shiro" % "shiro-core" % "1.2.0",
