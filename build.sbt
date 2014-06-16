@@ -1,10 +1,9 @@
+
 name := """acentera-community"""
 
 version := "1.0"
 
 sbtPlugin := true
-
-
 
 
 organization := "com.acentera"
@@ -17,12 +16,10 @@ organization := "com.acentera"
 
 //watchSources :=  (baseDirectory / "conf") map {  _ /  "routes" }
 
-lazy val acentera = (project in file("modules/acentera")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
+val acentera = (project in file("modules/acentera")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
    emberJsPrefix:= "acentera",
    javacOptions ++= Seq("-source", "1.7")
 )
-
-
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala).enablePlugins(PlayJava).settings(
    emberJsPrefix:= "user",
@@ -88,3 +85,5 @@ libraryDependencies ++= Seq(
     "com.github.mumoshu" % "play2-memcached_2.10" % "0.5.0-RC1",
     "oauth.signpost" % "signpost-commonshttp4" % "1.2"
 )
+
+
