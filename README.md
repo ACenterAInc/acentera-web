@@ -8,6 +8,24 @@ OpenSouce Cloud Platform / Platform As A Service  - Web Portal
 
 Stick with us on HipChat :  https://www.hipchat.com/gj2n23n8e
 
+## ACTIVATOR 2.3.0
+
+You may get into problem with the Activator, in order to resolve the issue here what we have done to make it works.
+
+1. Downlaod the offline activator version from typesafe (~ 300mb)
+2. Modify the vi ~/.sbt/repositories 
+  
+```bash
+     #add teh following line at the beginning of the file
+     activator-local: file://${activator.local.repository-${activator.home-${user.home}/.activator}/repository}, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+```
+3. Export your IVY_HOME Path...
+
+```bash
+    IVY_HOME=/Users/xxxxxapps/activator-1.2.2/
+    export IVY_HOME
+```
+
 
 ## Features
 

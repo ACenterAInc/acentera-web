@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: net.sf.json-lib:json-lib:2.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/net.sf.json-lib/json-lib/jars/json-lib-2.4-jdk15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

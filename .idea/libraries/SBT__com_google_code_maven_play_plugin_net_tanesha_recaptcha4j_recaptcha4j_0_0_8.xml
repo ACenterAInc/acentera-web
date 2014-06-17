@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: com.google.code.maven-play-plugin.net.tanesha.recaptcha4j:recaptcha4j:0.0.8">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.code.maven-play-plugin.net.tanesha.recaptcha4j/recaptcha4j/jars/recaptcha4j-0.0.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

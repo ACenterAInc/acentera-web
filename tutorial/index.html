@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>Hello Slick - Activator Template</title>
+</head>
+<body>
+
+<div>
+    <h2>Intro to ACenterA Community Portal</h2>
+    
+    <p>
+        ACenterA Web Portal is a Complete Enterprise Ready web portal to manage multi-cloud providers. We hope that the community will provide pull requests, in order to improve this framework and make everyone benefits from it. <br/> 
+        <br/>
+ 	Unlike a traditional Play Web Application, the controllers only responds to JSON Requests, making it great to build a RestFull API at the same time as building your Web Application.
+        <br/>
+        The Web UI is built using the ".handlebars" templates, thanks to the <pre>com.ketalo.play.plugins - play-emberjs</pre>
+        <br/>
+        <br/>
+        <br/>
+        This template will get you started building your first Enterprise Grade Web Application.
+    </p>
+</div>
+
+<div>
+    <h2>Intro to EmberJS</h2>
+    
+    <p>
+        <a href="http://www.emberjs.com/">EmberJS</a>
+    </p>
+</div>
+
+<div>
+    <h2>EmberJS ACenterA Implementation</h2>
+    
+    <p>
+    The EmberJS uses the play-emberjs plugin, which was modified a little bit and use our fork at <a href="https://github.com/ACenterAInc/play-emberjs">ACenterA Play-EmberJS</a>. Thanks for that original plugin, takes the various *.handlebars files and *.js from the following folders in that order
+
+<Br/>
+<Br/>
+Hierarchy
+
+<pre><code>
+    * modules/acentera/app/assets/templates/base/common/{view,models,controller}
+    * modules/acentera/app/assets/templates/base/user/{view,models,controller}
+
+    * app/assets/templates/base/common/{view,models,controller}
+    * app/assets/templates/base/user/{view,models,controller}
+</code></pre>
+
+The Javascript files generated generated are imported from following html file in a specific order
+
+<pre><code>
+    * modules/acentera/app/assets/views/main.scala.html
+</code></pre>
+</div>
+
+<div>
+  <h2>i18N - Multi-Language</h2>
+  <p>
+We have not yet modified or created all of the i18N texts, feel free to create or update the various views and send us a pull request. We will be happy to look at them and integrate it.
+<br/>
+Browser base Text Replacement
+
+<pre><code>
+
+EmberJS i18n.js file is located at modules/acentera/app/assets/templates/base/i18n.js
+</code></pre>
+<br/>
+Server-Base API Text Replacement
+
+<pre><code>
+
+The messages file is located at modules/acentera/conf/messages
+
+</code></pre>
+
+
+    </p>
+</div>
+    

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: org.hamcrest:hamcrest-all:1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-all/jars/hamcrest-all-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
