@@ -360,8 +360,6 @@ public class AnonymousSecurityController extends Action.Simple {
             }
 
 
-            Logger.debug("CURRENT USER IS : " + currentUser);
-            Logger.debug("CURRENT USER PRINCIPAL IS : " + currentUser.getPrincipal());
             ctx.args.put("subject", currentUser);
             return processRequest(ctx);
         } catch (ExpiredSessionException e) {
