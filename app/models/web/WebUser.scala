@@ -96,16 +96,11 @@ case class WebUser(email: String, cred: String, shiroToken : UsernamePasswordTok
 
   def setSubject(subject: Subject ) {
     //TODO: Set the cache..
-    Cache.set(user.getEmail + "_subject", subject)
     this.shiroSubject = subject
   }
 
   def getSubject() : Subject = {
-    if (this.shiroSubject == null) {
-      Cache.get(getUser().getEmail + "_subject").asInstanceOf[Subject];
-    } else {
       this.shiroSubject;
-    }
   }
 
 
@@ -119,7 +114,7 @@ case class WebUser(email: String, cred: String, shiroToken : UsernamePasswordTok
   }
 
 
-  def authenticate() : Boolean = {
+  def authenticate() : String = {
     val token = new UsernamePasswordToken(email, cred)
     // Use shiro to pass through a username cred token.
 
@@ -153,17 +148,21 @@ case class WebUser(email: String, cred: String, shiroToken : UsernamePasswordTok
       aes.init(Cipher.ENCRYPT_MODE, key);
       val ciphertext = aes.doFinal(cred.getBytes());
 
-      Cache.set(email + "_pass", ciphertext);
-
+      try {
+        Cache.set(email + "_pass", ciphertext);
+      } catch {
+        case e: Exception => {
+          //Pass, system might not be using centralized caching
+        }
+      }
 
       this.setSubject(shiroSubject);
-
-      true
+      java.util.Base64.getEncoder.encodeToString(ciphertext);
     } catch {
       case e: AuthenticationException => {
         Logger.debug("Authentication Exception");
         e.printStackTrace();
-        false
+        null
       }
     }
   }

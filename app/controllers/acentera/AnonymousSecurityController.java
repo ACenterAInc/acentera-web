@@ -81,25 +81,44 @@ public class AnonymousSecurityController extends Action.Simple {
         return res.value();
     }
 
-    String getStringCacheValue ( Http.Context ctx, String key )  {
-        String keyCache = uuid(ctx) + "." + key;
-        Logger.debug("CACHE KEY IS : " + keyCache);
-        Object data = Cache.get(keyCache);
-        if (data == null) {
-            return "";
-        } else {
-            return data.toString();
+    String getCookieKeyInfo(Http.Context ctx, String key ) {
+        try {
+            return (String)ctx.request().cookie(key).value();
+        } catch (Exception ee) {
+            ee.printStackTrace();
+            return null;
         }
     }
 
-    Object getCacheObject ( Http.Context ctx, String key )  {
-        String keyCache = uuid(ctx) + "." + key;
-        Object data = Cache.get(keyCache);
-        if (data == null) {
-            return null;
-        } else {
-            return data;
+    String getStringCacheValue ( Http.Context ctx, String key )  {
+        try {
+            String keyCache = uuid(ctx) + "." + key;
+            Logger.debug("CACHE KEY IS : " + keyCache);
+            Object data = Cache.get(keyCache);
+            if (data == null) {
+                return "";
+            } else {
+                return data.toString();
+            }
+        } catch (Exception ee) {
+            //No cache
         }
+        return null;
+    }
+
+    Object getCacheObject ( Http.Context ctx, String key )  {
+        try {
+            String keyCache = uuid(ctx) + "." + key;
+            Object data = Cache.get(keyCache);
+            if (data == null) {
+                return null;
+            } else {
+                return data;
+            }
+        } catch (Exception ee) {
+            //No cache
+        }
+        return null;
     }
 
     void setCacheObject ( Http.Context ctx, String key, String value )  {
@@ -184,10 +203,11 @@ public class AnonymousSecurityController extends Action.Simple {
             return s;*/
             //Logger.debug("SHIRO SESSION IS NOW EXPIRED");
             e.printStackTrace();
-            throw new org.apache.shiro.session.ExpiredSessionException("");
-
+            Subject s = new Subject.Builder().buildSubject();
+            return s;
         } catch (UnknownAccountException ue) {
             ue.printStackTrace();
+
 
             try {
                 Subject s = new Subject.Builder().buildSubject();
@@ -200,11 +220,22 @@ public class AnonymousSecurityController extends Action.Simple {
                 eee.printStackTrace();;
                 throw eee;
             }
+
         } catch (org.apache.shiro.session.ExpiredSessionException ee) {
             Logger.debug("SHIRO SESSION IS NOW EXPIRED");
             throw ee;
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                Subject s = new Subject.Builder().buildSubject();
+                return s;
+            } catch (UnknownSessionException ss) {
+                ss.printStackTrace();
+            } catch (ExpiredSessionException ss) {
+                ss.printStackTrace();
+            } catch (Exception eee) {
+                eee.printStackTrace();;
+                throw eee;
+            }
         }
         //Subject s = new Subject.Builder().buildSubject();
         //return s;
@@ -225,7 +256,7 @@ public class AnonymousSecurityController extends Action.Simple {
             //HibernateSessionFactory.getSession();
 
             String cacheValue = getStringCacheValue(ctx, AUTH_TOKEN);
-            String email = cacheValue;//(String)getCacheObject(ctx, "email");//not good, user can override email... getEmailFromSession(ctx);
+            String email = getEmailFromSession(ctx);
 
             Logger.debug("GOT EMAIL OF : " + email + " and cache avlue of : " + cacheValue);
             if (email != null && cacheValue != null) {
@@ -260,14 +291,20 @@ public class AnonymousSecurityController extends Action.Simple {
                     if (user == null) {
                     } else {
                         String k = Crypto.sign(user.getEmail() + "-" + user.getSalt() + "-" + user.getPassword());
-                        if (k.compareTo(ctx._requestHeader().session().get("tokensecret").get()) == 0) {
+                        Logger.debug("WILL CHECK CRYPTO VALUE OF... k " + k + " vs "  + ctx.request().cookie("tokensecret").value());
+                        if (k.compareTo(ctx.request().cookie("tokensecret").value()) == 0) {
                             //Its all good
+                            Logger.debug("ITS GOOD.....");
+                            ctx.args.put("email", email);
+                            user = UserImpl.getUserByEmail(email);
                         } else {
+                            //Invalid user... signature recevied not match email..
+                            user = null;
                         }
                     }
                 }
             }
-
+            Subject currentUser = null;
             Logger.debug("USER IS... " + user);
             if (user != null) {
                 //set the subject principals...
@@ -282,18 +319,30 @@ public class AnonymousSecurityController extends Action.Simple {
                 aes.init(Cipher.DECRYPT_MODE, key);
                 String pw = null;
                 try {
-                    pw = new String(aes.doFinal(((byte[]) Cache.get(user.getEmail() + "_pass"))));
+                    //String k = Crypto.sign(wu.getUser().getEmail() + "-" + wu.getUser().getSalt() + "-" + wu.getUser().getPassword());
+
+                    Logger.debug("WILL CHECK SECRET KEY ?");
+
+                    byte[] pwHashed = java.util.Base64.getDecoder().decode(getCookieKeyInfo(ctx, "secret_key"));
+                    pw = new String(aes.doFinal(pwHashed));
+
+                    Logger.debug("GOT PW OF : " + pw);
+
+                    //pw = new String(aes.doFinal(((byte[]) Cache.get(user.getEmail() + "_pass"))));
+
                 } catch (Exception ee) {
+                    ee.printStackTrace();
                     if (play.Play.isDev()) {
                         pw = play.Play.application().configuration().getString("dev_default_user_password");
                     }
                 }
 
+
                 //Because we are stateless we must login each time...
                 //TODO: If we impersonnate user (from an admin portal) to simulate we are someone else..
                 //we should override the login / user here..
                 UsernamePasswordToken tk = new UsernamePasswordToken(user.getEmail(), pw);
-                Subject currentUser = null;
+
                 try {
                     currentUser = getSubject();
                     tk.setRememberMe(true);
@@ -302,6 +351,8 @@ public class AnonymousSecurityController extends Action.Simple {
                     currentUser = new Subject.Builder().buildSubject();
                     currentUser.login(tk);
                 } catch (Exception ee) {
+                    currentUser = new Subject.Builder().buildSubject();
+                    currentUser.login(tk);
                 }
 
 
@@ -309,6 +360,9 @@ public class AnonymousSecurityController extends Action.Simple {
             }
 
 
+            Logger.debug("CURRENT USER IS : " + currentUser);
+            Logger.debug("CURRENT USER PRINCIPAL IS : " + currentUser.getPrincipal());
+            ctx.args.put("subject", currentUser);
             return processRequest(ctx);
         } catch (ExpiredSessionException e) {
 
@@ -322,6 +376,7 @@ public class AnonymousSecurityController extends Action.Simple {
                 }
                 HibernateSessionFactory.rollback();
 
+                Logger.debug(this + " - REDIRECTING TO /login");
                 return F.Promise.pure(redirect("/login"));
         } catch (Exception e) {
             //e.printStackTrace();
@@ -343,8 +398,10 @@ public class AnonymousSecurityController extends Action.Simple {
             }
             HibernateSessionFactory.closeSession();
         }
+        
         return NotAuthorized();
     }
+
 
     protected F.Promise<Result> processRequest(Http.Context ctx) throws Throwable {
         Logger.debug(" [ AnonymousProcessRequest ] - Start ");

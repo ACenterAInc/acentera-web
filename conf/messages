@@ -1,0 +1,60 @@
+hello=Hello!
+
+INVALID_TOKEN=Token is invalid
+UNAUTHORIZED=You do not have permissions to perform this action
+INVALID_OPERATION=The operation requested is not valid
+PASSWORD_UPDATE_CONFIRM_PASSWORD_DOES_NOT_MATCH=The password and confirmation password does not match
+INVALID_PASSWORD=The current account password does not match the password that you have provided
+EXCEPTION_OCCURED=The operation failed due to an exception
+DELETE_FAILED=The operation failed to delete the requested object
+
+EMAIL_RESET_SUBJECT=ACenterA - Password reset
+EMAIL_RESET_PLAIN_HEAD=<br/
+EMAIL_RESET_PLAIN_PHRASE1=Hello\r\nSomeone have requested a password reset on your account. If you have not requested the change, you may ignore this email.\r\n\r\n
+EMAIL_RESET_PLAIN_PHRASE2=
+EMAIL_RESET_PLAIN_LINKPHRASE_BEFORE=Please visit this one-time link
+EMAIL_RESET_PLAIN_LINKPHRASE_AFTER=in order to update your password.
+EMAIL_RESET_PLAIN_PHRASE3=
+EMAIL_RESET_PLAIN_PHRASE4=
+EMAIL_RESET_PLAIN_FOOTER=Best Regards,\r\nACenterA
+
+
+EMAIL_RESET_SUBJECT=ACenterA - Password reset
+EMAIL_RESET_HTML_HEAD=<br/
+EMAIL_RESET_HTML_PHRASE1=Hello<br/><br/>
+EMAIL_RESET_HTML_PHRASE2=Someone have requested a password reset on your account. If you have not requested the change, you may ignore this email.<br/><br/><br/><br/>P
+EMAIL_RESET_HTML_LINKPHRASE_BEFORE=Please visit this one-time link
+EMAIL_RESET_HTML_LINKPHRASE_AFTER=in order to update your password.
+EMAIL_RESET_HTML_PHRASE3=<br/>
+EMAIL_RESET_HTML_PHRASE4=<br/>
+EMAIL_RESET_HTML_FOOTER=Best Regards,<br/>ACenterA
+
+
+
+
+
+
+
+
+
+EMAIL_INVITE_SUBJECT=ACenterA - Project Invite
+EMAIL_INVITE_PLAIN_HEAD=<br/
+EMAIL_INVITE_PLAIN_PHRASE1=Hello\r\nYou have been invited by
+EMAIL_INVITE_PLAIN_PHRASE2=\r\n\r\nIf you do not want to accept, you may ignore this or go on our website to reject the request.\r\n\r\n
+EMAIL_INVITE_PLAIN_LINKPHRASE_BEFORE=Please visit the following link
+EMAIL_INVITE_PLAIN_LINKPHRASE_AFTER=in order to accept or decline the request.
+EMAIL_INVITE_PLAIN_PHRASE3=
+EMAIL_INVITE_PLAIN_PHRASE4=
+EMAIL_INVITE_PLAIN_FOOTER=Best Regards,\r\nACenterA
+
+
+EMAIL_INVITE_SUBJECT=ACenterA - Project Invite
+EMAIL_INVITE_HTML_HEAD=<br/
+EMAIL_INVITE_HTML_PHRASE1=Hello<br/><br/>You have been invited by
+EMAIL_INVITE_HTML_PHRASE2=<br/><br/>Someone have invited you to a project. If you do not want to accept, you may ignore this or go on our website to reject the request.<br/><br/><br/><br/>
+EMAIL_INVITE_HTML_LINKPHRASE_BEFORE=Please visit the following link
+EMAIL_INVITE_HTML_LINKPHRASE_AFTER=in order to accept or decline the request.
+EMAIL_INVITE_HTML_PHRASE3=<br/>
+EMAIL_INVITE_HTML_PHRASE4=<br/>
+EMAIL_INVITE_HTML_FOOTER=Best Regards,<br/>ACenterA
+

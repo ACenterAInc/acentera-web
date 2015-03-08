@@ -24,6 +24,7 @@ SOFTWARE.
 
 package controllers
 
+import play.Logger
 import play.api._
 import play.api.mvc._
 import play.api.mvc.Results._
@@ -198,7 +199,7 @@ trait Authentication {
 
   private def onUnauthorized(request: RequestHeader) = {
     if (!  ( (request.uri.contains("/api/")) || (request.uri.contains("/ajax/"))))  {
-
+      Logger.debug(this + " - REDIRECTING from onUnauthorized TO /login")
       Results.Redirect(Play.configuration.getString("application.url").getOrElse("/") + "login")
     } else {
       Results.Unauthorized("{ \"status\": \"Not Authorized\" }").as("application/json")

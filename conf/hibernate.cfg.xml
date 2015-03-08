@@ -6,34 +6,24 @@
 <hibernate-configuration>
     <session-factory>
 
-        <!--
-                    <property name="hibernate.service.jdbc.connections.spi.provider_class">com.jolbox.bonecp.provider.BoneCPConnectionProvider</property>
-        -->
-
-        <!--
-            <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-	-->
         <property name="connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
         <property name="hibernate.connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
 
-     <!--   <property name="hibernate.connection.driver_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
--->
+
+        <property name="hibernate.hikari.dataSource.url">jdbc:h2:acentera.db;MODE=MYSQL;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE;AUTO_RECONNECT=TRUE;MULTI_THREADED=0;MVCC=TRUE</property>
+        <property name="hibernate.hikari.dataSource.user">sa</property>
+        <property name="hibernate.hikari.dataSource.password"></property>
+
+<!--
         <property name="hibernate.hikari.dataSource.url">jdbc:mysql://localhost:3306/app?interactiveClient=true&amp;autoReconnect=true&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;profileSQL=false</property>
         <property name="hibernate.hikari.dataSource.user">root</property>
         <property name="hibernate.hikari.dataSource.password"></property>
-
-        <property name="hibernate.hikari.dataSourceClassName">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</property>
-       <!-- <property name="hibernate.hikari.driverClassName">com.mysql.jdbc.Driver</property>
 -->
+
+        <property name="hibernate.hikari.dataSourceClassName">org.h2.jdbcx.JdbcDataSource</property>
         <property name="hibernate.hikari.maximumPoolSize">30</property>
         <property name="hibernate.hikari.idleTimeout">30000</property>
-<!--
-	<property name="hibernate.hikari.dataSource.prepStmtCacheSize">250</property>
- 	<property name="hibernate.hikari.dataSource.prepStmtCacheSqlLimit">2048</property>
-	<property name="hibernate.hikari.dataSource.useServerPrepStmts">true</property>
--->
-
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>

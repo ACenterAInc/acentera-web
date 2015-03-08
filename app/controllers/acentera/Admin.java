@@ -45,9 +45,10 @@ public class Admin extends Controller {
     //     return controllers.Assets.at(path, file);
     //}
 
-
     @With(AnonymousSecurityController.class)
     public static Result index() {
+
+
 
         if (request().cookie(SecurityController.AUTH_TOKEN) != null) {
             Logger.debug("APPLICATION RETURN INDEX -> " + Play.application().configuration().getString("application.env"));
@@ -66,6 +67,10 @@ public class Admin extends Controller {
                 Logger.debug("AuthtneicateD ? " + s.isAuthenticated());
             } catch (Exception error) {
                 //In case we have other exceptions
+                error.printStackTrace();
+
+                Logger.debug(" REDIRECT FROM INDEX() TO /login and force logout...");
+
                 SecurityController.logout(ctx());
                 return redirect("/");
             }
@@ -99,7 +104,11 @@ public class Admin extends Controller {
         } catch (Exception error) {
             //In case we have other exceptions
             error.printStackTrace();
+
+            Logger.debug(" REDIRECT FROM INDEXWITHPATH() TO /login and force logout...");
+
             SecurityController.logout(ctx());
+
             return redirect("/");
         }
 

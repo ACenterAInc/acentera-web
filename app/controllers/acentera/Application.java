@@ -67,7 +67,9 @@ public class Application extends Controller {
                 Logger.debug("AuthtneicateD ? " + s.isAuthenticated());
             } catch (Exception error) {
                 //In case we have other exceptions
+                error.printStackTrace();
                 SecurityController.logout(ctx());
+                Logger.debug(" REDIRECT FROM APPlication.INDEX() TO /login and force logout...");
                 return redirect("/");
             }
 
@@ -76,6 +78,7 @@ public class Application extends Controller {
             return ok(login.render("login", ""));
         }
     }
+
 
     @With(SecurityController.class)
     public static Result indexWithPath( String path ) {
@@ -100,6 +103,7 @@ public class Application extends Controller {
         } catch (Exception error) {
             //In case we have other exceptions
             error.printStackTrace();
+            Logger.debug(" REDIRECT FROM APPlication.IndexWithPath() TO /login and force logout...");
             SecurityController.logout(ctx());
             return redirect("/");
         }

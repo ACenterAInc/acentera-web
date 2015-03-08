@@ -16,3 +16,7 @@ server.pid
 /dist/
 .cache
 public/templates/generated
+*.db
+.idea
+.idea/workspace
+.sbtserver

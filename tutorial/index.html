@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Hello Slick - Activator Template</title>
+    <title>ACenterA Web Portal - Activator Template</title>
 </head>
 <body>
 
@@ -41,14 +41,14 @@
 Hierarchy
 
 <pre><code>
-    * modules/acentera/app/assets/templates/base/common/{view,models,controller}
-    * modules/acentera/app/assets/templates/base/user/{view,models,controller}
 
     * app/assets/templates/base/common/{view,models,controller}
     * app/assets/templates/base/user/{view,models,controller}
-</code></pre>
+    * app/assets/templates/base/admin/{view,models,controller}
+</code>
+</pre>
 
-The Javascript files generated generated are imported from following html file in a specific order
+The Javascript files generated generated are imported from following html file
 
 <pre><code>
     * modules/acentera/app/assets/views/main.scala.html
@@ -60,18 +60,20 @@ The Javascript files generated generated are imported from following html file i
   <p>
 We have not yet modified or created all of the i18N texts, feel free to create or update the various views and send us a pull request. We will be happy to look at them and integrate it.
 <br/>
-Browser base Text Replacement
+
+Browser base Text Replacement this file could be migrated into /base/common/controllers/i18n.js each layer extends the base version...
 
 <pre><code>
 
-EmberJS i18n.js file is located at modules/acentera/app/assets/templates/base/i18n.js
+EmberJS i18n.js file is located at modules/acentera/app/assets/templates/base/user/controllers/i18n.js
+
 </code></pre>
 <br/>
 Server-Base API Text Replacement
 
 <pre><code>
 
-The messages file is located at modules/acentera/conf/messages
+The messages file is located at conf/messages or m
 
 </code></pre>
 

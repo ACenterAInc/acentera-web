@@ -97,8 +97,9 @@ public class Auth extends Controller {
             Login login = loginForm.get();
 
             WebUser wu = new WebUser(login.email, login.password, new UsernamePasswordToken(login.email, login.password));
-
-            if (wu.authenticate()) {
+            String authSecret = wu.authenticate();
+            Logger.debug("GOT AUTH SECRET OF : " + new String(authSecret));
+            if (authSecret != null) {
 
                 Random rand = new Random();
 
@@ -109,10 +110,16 @@ public class Auth extends Controller {
                 Logger.debug("AUTH : " + wu);
                 Logger.debug("AUTH : " + wu.getUser());
                 Logger.debug("AUTH : " + wu.getUser().getEmail());
+
+
                 String k = Crypto.sign(wu.getUser().getEmail() + "-" + wu.getUser().getSalt() + "-" + wu.getUser().getPassword());
 
                 //Cache.set(uuid + ".webuser", wu);
-                Cache.set(uuid + ".token", wu.email());
+                try {
+                    Cache.set(uuid + ".token", wu.email());
+                } catch (Exception ee) {
+                    //No cache defined?
+                }
 
                 Logger.trace("User email is : " + wu.email());
 
@@ -123,10 +130,15 @@ public class Auth extends Controller {
                 response().setCookie(SecurityController.AUTH_TOKEN, uuid);
                 response().setCookie("email", wu.email());
                 response().setCookie("tokensecret", k);
+                response().setCookie("secret_key", authSecret);
 
                 session(SecurityController.AUTH_TOKEN, uuid);
                 session("email", wu.email());
+
+                //We signed the email.... and other values... making sure nobody change email parameter..
                 session("tokensecret", k);
+                session("secret_key", authSecret);
+
                 return ok(authTokenJson);
             }
 
@@ -137,7 +149,7 @@ public class Auth extends Controller {
             authTokenJson.put("message", Messages.get("INVALID_PASSWORD"));
             return ok(authTokenJson);
         } catch (Exception ew) {
-            //ew.printStackTrace();
+            ew.printStackTrace();
             HibernateSessionFactory.rollback();
 
             ObjectNode authTokenJson = Json.newObject();
@@ -382,7 +394,8 @@ captcha*/
         PluginManager.notifyEvent(PluginEvent.WEBUSER_USER_CREATED, theUser);
 
         WebUser wu = new WebUser(theUser.getEmail(), theUser.getPassword(), new UsernamePasswordToken(theUser.getEmail(), theUser.getPassword()));
-        if (wu.authenticate()) {
+        String authSecret = wu.authenticate();
+        if (authSecret != null) {
             return wu;
         } else {
             return null;

@@ -60,65 +60,6 @@ public class SecurityController extends AnonymousSecurityController {
     public static final String DESKTOP_TOKEN = "dtid";
     private Files session;
 
-    String uuid(play.mvc.Http.Context ctx) {
-        Logger.debug("UUID is : " + ctx._requestHeader().session());
-        Logger.debug("UUID VS is : " + ctx._requestHeader().headers());
-        Http.Cookie res = ctx.request().cookie(AUTH_TOKEN);
-        if (res == null) {
-            return "";
-        }
-
-
-        return res.value();
-    }
-
-    String getEmailFromSession(play.mvc.Http.Context ctx) {
-
-        Http.Cookie res = ctx.request().cookie("email");
-        if (res == null) {
-            return "";
-        }
-
-
-        return res.value();
-    }
-
-    String getStringCacheValue ( play.mvc.Http.Context ctx, String key )  {
-        String keyCache = uuid(ctx) + "." + key;
-        Logger.debug("CACHE KEY IS : " + keyCache);
-        Object data = Cache.get(keyCache);
-        if (data == null) {
-            return "";
-        } else {
-            return data.toString();
-        }
-    }
-
-    Object getCacheObject ( play.mvc.Http.Context ctx, String key )  {
-        String keyCache = uuid(ctx) + "." + key;
-        Object data = Cache.get(keyCache);
-        if (data == null) {
-            return null;
-        } else {
-            return data;
-        }
-    }
-
-
-
-    public static Result FailedMessage(String message) {
-        JSONObject jsoUnauthorzed = new JSONObject();
-        jsoUnauthorzed.put("status", "failed");
-        jsoUnauthorzed.put("message", Messages.get(message));
-        return notFound(jsoUnauthorzed.toString()).as("application/json");
-    }
-
-    public static Result InternalServerError(String message) {
-        return internalServerError().as("application/json");
-    }
-
-
-
     public F.Promise<Result> NotAuthorized() {
         //return play.libs.F.Promise.pure((SimpleResult) controllers.Auth.logout());
         return play.libs.F.Promise.pure((Result) FailedMessage("UNAUTHORIZED"));
@@ -197,8 +138,6 @@ public class SecurityController extends AnonymousSecurityController {
                 ctx.args.put("email", user.getEmail());
 
 
-
-
                 String passphrase = play.Play.application().configuration().getString("privatekey");
                 MessageDigest digest = MessageDigest.getInstance("SHA");
                 digest.update(passphrase.getBytes());
@@ -208,7 +147,11 @@ public class SecurityController extends AnonymousSecurityController {
                 aes.init(Cipher.DECRYPT_MODE, key);
                 String pw = null;
                 try {
-                    pw = new String(aes.doFinal(((byte[]) Cache.get(user.getEmail() + "_pass"))));
+
+                    byte[] pwHashed = java.util.Base64.getDecoder().decode(getCookieKeyInfo(ctx, "secret_key"));
+                    pw = new String(aes.doFinal(pwHashed));
+
+                    //pw = new String(aes.doFinal(((byte[]) Cache.get(user.getEmail() + "_pass"))));
                 } catch (Exception ee) {
                     if (play.Play.isDev()) {
                         pw = play.Play.application().configuration().getString("dev_default_user_password");

@@ -9,10 +9,9 @@ CREATE TABLE IF NOT EXISTS `ROLE` (
   `last_modified` datetime DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 
-INSERT IGNORE INTO ROLE(ID, NAME, CREATED) VALUES (1, 'ProjectAdmin', NOW());
-
+INSERT INTO ROLE(ID, NAME, CREATED) VALUES (1, 'ProjectAdmin', NOW());
 
 CREATE TABLE IF NOT EXISTS `USER` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `USER` (
   UNIQUE KEY `UK_oso07pudw19e66bs4yp8hwpux` (`email`),
   KEY `FK_7t5c2cckyufgl3y0sofxdpr17` (`partner_id`),
   CONSTRAINT `FK_7t5c2cckyufgl3y0sofxdpr17` FOREIGN KEY (`partner_id`) REFERENCES `PARTNER` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 insert into partner (name, salt, funds, monthlycost, totalcost, funds_added,cloudid,demo_task_id, subscription_type, wizard) values ('admin@acentera.com', '63f6c0ff4bbbbd62d2ce9d434416c151', 0,0, 0, 0, 342152,0,0,1);
 insert into user (id, cred, salt, email, partner_id) select 0, 'D6uoyK9z6RRnYrK9DP7KWnY37PUvWJXLxaEWfUdB+AY=', 'N940tTMwnnsYp577WS5tAo02cy7nmHdzP1DH+boBJc8=', 'admin@acentera.com', id from partner where name = 'admin@acentera.com';

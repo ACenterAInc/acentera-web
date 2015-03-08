@@ -1,0 +1,7 @@
+hello=Bonjour!
+
+INVALID_TOKEN=Le Token est invalide
+UNAUTHORIZED=Vous n''avez pas les permissions pour executer cette action
+INVALID_OPERATION=L''operation demandé n''est pas valide
+PASSWORD_UPDATE_CONFIRM_PASSWORD_DOES_NOT_MATCH=Le password n''est pas identique a celui de confirmation.
+INVALID_PASSWORD=The current account password does not match the password that you have provided
