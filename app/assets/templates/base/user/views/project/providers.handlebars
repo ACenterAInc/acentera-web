@@ -1,0 +1,134 @@
+{{#if controllers.project}}
+{{#if controllers.project.ProjectAdmin}}
+    <a id="addCloud" class="btn btn-danger btn-lg"  data-target="#createProvider" data-original-title="Add a cloud provider" data-toggle="collapse">
+        <i class="fa fa-plus"></i>
+        Add Cloud
+    </a>
+
+    <div id="createProvider" class="collapse text-grey mediumtopmargin">
+
+        {{#if errorMsg}}
+            <div class="col-lg-2">
+            </div>
+            <div class="alert alert-danger col-lg-8">
+                <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+                <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+            </div>
+        {{/if}}
+        <table class="row provider_list row-fluid col-lg-12 smallleftpad">
+
+        <tr>
+            <td class="col-lg-3 text-grey">
+                Provider:
+            </td>
+            <td>
+                <div {{action select 'digitalocean'}}>
+                    <img id="digitalocean" src="https://www.digitalocean.com/assets/images/logos-badges/png/DO_Logo_Vertical_Blue-75e0d68b.png" class="smalllogo canclick"/>
+                </div>
+            </td>
+        </tr>
+        </table>
+
+
+        {{#if selectedProviderType}}
+        {{else}}
+            <div class="row provider_list row-fluid col-lg-12 smallleftpad ">
+                {{i18n "project.provider_select"}}
+            </div>
+        {{/if}}
+
+
+        <div class="row row-fluid col-lg-12">
+            <div class="row col-lg-8 text-center">
+                {{#if selectedProviderType}}
+                    <table class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+                        <thead>
+                        <th class="row smalltopmargin col-lg-2 text-left"></th>
+                        <th class="col-lg-1 text-right"></th>
+                        <th class=""></th>
+                        </thead>
+                        <tr>
+                            <td>
+                                {{i18n "name"}}
+                            </td>
+                            <td>
+                                <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.create_name_tooltip"}} data-toggle="tooltip"></i>
+                            </td>
+                            <td>
+                                {{view App.NotEmptyNoSpaceTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.displayname_input_placeholder" valueBinding="new_provider_name" elementId="new_provider_name"}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{i18n "tag"}}
+                            </td>
+                            <td>
+                                <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.create_tag_tooltip"}} data-toggle="tooltip"></i>
+                            </td>
+                            <td>
+                                {{view App.NotEmptyTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.displaytag_input_placeholder" valueBinding="new_provider_tag" elementId="new_provider_tag"}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{#if-equal param1=selectedProviderType param2="digitalocean"}}
+                                    {{i18n "digitalocean.clientid"}}
+                                {{/if-equal}}
+                            </td>
+                            <td>
+                                <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="digitalocean.clientid_tooltip"}} data-toggle="tooltip"></i>
+                            </td>
+                            <td>
+                                {{view App.NotEmptyTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.publickey_input_placeholder" valueBinding="new_provider_apikey" elementId="new_provider_apikey"}}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {{i18n "apisecretkey"}}
+                            </td>
+                            <td>
+                                <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="digitalocean.clientid_tooltip"}} data-toggle="tooltip"></i>
+                            </td>
+                            <td>
+                                {{view App.NotEmptyTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.privatekey_input_placeholder" valueBinding="new_provider_secretkey" elementId="new_provider_secretkey"}}
+                            </td>
+                        </tr>
+                    </table>
+
+                {{/if}}
+
+                <div class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+                    <input {{action cancelNewProvider}} type="button" class="btn btn-default"  data-target="#createProvider" data-original-title="Add a cloud provider" data-toggle="collapse" value="Cancel">
+                    </input>
+                    {{#if selectedProviderType}}
+                        <input  {{action addNewProvider}} class="btn btn-primary" type="button" value="Save">
+                        </input>
+                    {{/if}}
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mediumtopmargin">
+        {{provider-table dataBinding="providers" isLoaded=view.loaded tableId="providers_table" template_name="components/table/providertable" clickRoute="project/provider"}}
+    </div>
+
+    {{outlet}}
+{{else}}
+    <div class="collapse text-grey mediumtopmargin">
+        <div class="row row-fluid col-lg-12">
+            <div class="row col-lg-8 text-center">
+                You do not have permission to view this ressource.
+            </div>
+        </div>
+    </div>
+{{/if}}
+{{/if}}
+
+
+
+

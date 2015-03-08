@@ -1,0 +1,97 @@
+
+     <div class="row">
+        Current Cluster Region (Master) :
+
+        {{#equalObject nyc1 region}}
+        New York 1
+        {{/equalObject}}
+
+        {{#equalObject nyc2 region}}
+        New York 2
+        {{/equalObject}}
+
+
+        {{#equalObject sfo1 region}}
+        San Fransico 1
+        {{/equalObject}}
+
+        {{#equalObject sfo2 region}}
+        San Fransico 2
+        {{/equalObject}}
+
+        {{#equalObject ams1 region}}
+        Amsterdam 1
+        {{/equalObject}}
+
+        {{#equalObject ams2 region}}
+        Amsterdam 2
+        {{/equalObject}}
+
+
+        {{#equalObject sgp1 region}}
+        Singapore 1
+        {{/equalObject}}
+
+        <br/>
+        <br/>
+
+
+        {{#if view.isapp}}
+        The Application size :
+        {{else}}
+        The Database size :
+        {{/if}}
+
+        {{#if-equal param1=cluster.size param2=66}}
+        512MB, 1CPU, 20GB SSD
+
+        <br/>
+        <br/>
+
+
+        {{/if-equal}}
+
+        {{#if-equal param1=cluster.size param2=63}}
+        1GB, 1CPU, 30GB SSD
+
+        <br/>
+        <br/>
+
+        {{/if-equal}}
+
+        {{#if-equal param1=cluster.size param2=62}}
+        2GB, 2CPU, 40GB SSD
+
+        <br/>
+        <br/>
+
+        {{/if-equal}}
+
+        {{#if-equal param1=cluster.size param2=64}}
+        4GB, 2CPU, 60GB SSD
+
+        <br/>
+        <br/>
+
+        {{/if-equal}}
+
+        {{#if-equal param1=cluster.size param2=65}}
+        8GB, 4CPU, 80GB SSD
+        <br/>
+        <br/>
+
+        {{/if-equal}}
+
+        {{#if-equal param1=cluster.size param2=61}}
+        16GB, 8CPU, 160GB SSD
+        <br/>
+        <br/>
+        {{/if-equal}}
+
+        {{#if showCost}}
+              The monthly cost is {{sizemonthlyCost}}$/month/server
+        {{/if}}
+
+        <br/>
+
+    </div>

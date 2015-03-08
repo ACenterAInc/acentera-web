@@ -1,0 +1,11 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", escapeExpression = this.escapeExpression;
+    data.buffer.push("<div class=\"\"><input type=\"checkbox\" ");
+    data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"checked":("view.checked")}, hashTypes:{"checked":"STRING"}, hashContexts:{"checked":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push(" disabled=\"disabled\"></div>\n\n");
+    return buffer;
+}

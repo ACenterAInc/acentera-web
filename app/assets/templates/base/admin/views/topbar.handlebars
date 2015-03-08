@@ -1,0 +1,82 @@
+{{#if hasLoaded}}
+
+
+{{#if-equal param1=topbarTemplate param2="single"}}
+    <div class="main-bar col-lg-12">
+            <h3><i {{bind-attr class="breadcrumb.icon"}}></i>
+                {{#each v in breadcrumb}}
+                    {{#if v.visible}}
+                        {{#if v.hasNext}}
+                            <a {{action goto v.routename v.model v.parent}}>
+                                {{v.name}}
+                            </a>
+                            {{#if v.hasNext}}
+                                <i class="icon-double-angle-right"></i>
+                            {{/if}}
+                        {{else}}
+                            {{v.name}}
+                        {{/if}}
+                    {{/if}}
+                {{/each}}
+            </h3>
+    </div>
+
+{{/if-equal}}
+{{!-- view.content.name --}}
+{{#if-equal param1=topbarTemplate param2="dual"}}
+        <div class="search-bar col-lg-3">
+            <!--
+                <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+                    <i class="icon-sort"></i>
+                </a>
+             -->
+
+            <div class="search-bar-inner text-center">
+                <div class='dropdown'>
+                    {{#if hasLoaded}}
+                        {{#equalObject 1 controller.projects.length}}
+                            <div class="dropdown-toggle search-bar-dropdown" >
+                                {{controller.selectedProject.name}}
+                            </div>
+                        {{else}}
+                                <div class="dropdown-toggle" data-toggle="dropdown" style="padding-top:8px;padding-left:1px;color: #fff;cursor:pointer;">
+                                    {{controller.selectedProject.name}}<b class="caret search-bar-caret"></b>
+                                </div>
+                                <ul class="dropdown-menu dropdown-leftmenu">
+                                    {{#each v in controller.projects}}
+                                        <li><a style="cursor:pointer;" {{action changeContext v}}>{{v.name}}</a></li>
+                                    {{/each}}
+                                    {{!--<li><a style="cursor:pointer;" {{action createCluster}}>Create Project</a></li>--}}
+                                </ul>
+                        {{/equalObject}}
+
+                    {{/if}}
+                </div>
+            </div>
+        </div><!-- ."search-bar -->
+        <div class="main-bar col-lg-7">
+            {{#if hasLoaded}}
+                <h3><i {{bind-attr class="breadcrumb.icon"}}></i>
+                    {{#each v in breadcrumb}}
+
+
+                        {{#if v.visible}}
+                            {{#if v.hasNext}}
+                                {{#if v.name}}
+                                    <a {{action goto v.routename v.model v.parent}}>
+                                            {{v.name}}
+                                    </a>
+                                    {{#if v.hasNext}}
+                                        <i class="icon-double-angle-right"></i>
+                                    {{/if}}
+                                {{/if}}
+                            {{else}}
+                                {{v.name}}
+                            {{/if}}
+                        {{/if}}
+                    {{/each}}
+                </h3>
+            {{/if}}
+        </div>
+{{/if-equal}}
+{{/if}}

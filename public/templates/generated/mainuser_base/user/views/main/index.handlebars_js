@@ -1,0 +1,58 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, escapeExpression = this.escapeExpression, helperMissing = helpers.helperMissing, self = this;
+    function program1(depth0, data) {
+        var buffer = "", helper, options;
+        data.buffer.push("\n        <a ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "createNewProject", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push("  class=\"btn btn-danger btn-lg\"  ");
+        data.buffer.push(escapeExpression((helper = helpers["bind-attr-i18n"] || (depth0 && depth0["bind-attr-i18n"]), options = {hash:{"data-original-title":("project.create_tooltip")}, hashTypes:{"data-original-title":"STRING"}, hashContexts:{"data-original-title":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bind-attr-i18n", options))));
+        data.buffer.push(" data-toggle=\"tooltip\">New Project</a>\n    ");
+        return buffer;
+    }
+    function program3(depth0, data) {
+        var buffer = "", helper, options;
+        data.buffer.push("\n        <a ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "createNewProject", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push("  class=\"btn btn-danger btn-lg\"  ");
+        data.buffer.push(escapeExpression((helper = helpers["bind-attr-i18n"] || (depth0 && depth0["bind-attr-i18n"]), options = {hash:{"data-original-title":("project.create_first_tooltip")}, hashTypes:{"data-original-title":"STRING"}, hashContexts:{"data-original-title":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bind-attr-i18n", options))));
+        data.buffer.push(" data-toggle=\"tooltip\">Create Project</a>\n    ");
+        return buffer;
+    }
+    function program5(depth0, data) {
+        var buffer = "", helper, options;
+        data.buffer.push("\n    <div class=\"mediumtopmargin\">\n        <h2>You have pending invitations...</h2>\n\n        ");
+        data.buffer.push(escapeExpression((helper = helpers["projectlist-table"] || (depth0 && depth0["projectlist-table"]), options = {hash:{"dataBinding":("pendingInvites"), "type":("pendingInvite"), "isLoaded":("view.loaded"), "tableId":("project_invite_table"), "template_name":("components/table/projectlist"), "clickRoute":("project.index")}, hashTypes:{"dataBinding":"STRING", "type":"STRING", "isLoaded":"ID", "tableId":"STRING", "template_name":"STRING", "clickRoute":"STRING"}, hashContexts:{"dataBinding":depth0, "type":depth0, "isLoaded":depth0, "tableId":depth0, "template_name":depth0, "clickRoute":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "projectlist-table", options))));
+        data.buffer.push("\n\n    </div>\n");
+        return buffer;
+    }
+    function program7(depth0, data) {
+        var buffer = "", helper, options;
+        data.buffer.push("\n    <div class=\"mediumtopmargin\">\n\n        ");
+        data.buffer.push(escapeExpression((helper = helpers["projectlist-table"] || (depth0 && depth0["projectlist-table"]), options = {hash:{"dataBinding":("projects"), "type":("accepted"), "isLoaded":("view.loaded"), "tableId":("project_table"), "template_name":("components/table/projectlist"), "clickRoute":("project.index")}, hashTypes:{"dataBinding":"STRING", "type":"STRING", "isLoaded":"ID", "tableId":"STRING", "template_name":"STRING", "clickRoute":"STRING"}, hashContexts:{"dataBinding":depth0, "type":depth0, "isLoaded":depth0, "tableId":depth0, "template_name":depth0, "clickRoute":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "projectlist-table", options))));
+        data.buffer.push("\n    </div>\n\n");
+        return buffer;
+    }
+    data.buffer.push("\n\n\n<div class=\"col-lg-12\">\n    ");
+    stack1 = helpers["if"].call(depth0, "projects.length", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.program(3, program3, data), fn:self.program(1, program1, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n    \n</div>\n\n\n\n<div ");
+    data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"class":(":mediumtopmargin projects.length:hidden:visible")}, hashTypes:{"class":"STRING"}, hashContexts:{"class":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push(">\n    Create your first project.\n</div>\n\n");
+    stack1 = helpers["if"].call(depth0, "pendingInvites", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(5, program5, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n");
+    stack1 = (helper = helpers["else-equal"] || (depth0 && depth0["else-equal"]), options = {hash:{"param1":("projects.length"), "param2":(0)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(7, program7, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "else-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n\n");
+    return buffer;
+}

@@ -1,0 +1,32 @@
+@(section: String,email: String = "")
+
+@main("ACenterA Portal", 0) {
+
+<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/magic.css")"/>
+<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")"/>
+
+
+<div class="container-fluid">
+
+    <div class="row row-fluid">
+        <div class="span4 offset4 text-center">
+                <img src="assets/images/logo.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="row row-fluid span4">
+
+    <div class="span4 offset4 text-center tab-content col-lg-12">
+            <div id="login" class="tab-pane active">
+                        <form action="/" method="GET" class="form-signin">
+                            <p class="text-center">You should receive an email shortly.</p>
+                            <br>
+                            <button class="btn btn-lg btn-success btn-block" type="submit">Return to Login</button>
+                        </form>
+            </div>
+    </div>
+</div>
+
+
+}

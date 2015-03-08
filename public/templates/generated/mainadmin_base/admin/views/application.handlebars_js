@@ -1,0 +1,69 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, escapeExpression = this.escapeExpression, helperMissing = helpers.helperMissing, self = this;
+    function program1(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n <div id=\"wrap\">\n     ");
+        data.buffer.push(escapeExpression((helper = helpers.outlet || (depth0 && depth0.outlet), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data}, helper ? helper.call(depth0, "modal", options) : helperMissing.call(depth0, "outlet", "modal", options))));
+        data.buffer.push("\n      <div id=\"top\">\n          <!-- .navbar -->\n          <nav class=\"navbar navbar-inverse navbar-fixed-top\">\n              <!-- Brand and toggle get grouped for better mobile display -->\n              <header class=\"navbar-header row col-lg-3\">\n\n                  <div class=\"col-lg-6\">\n                  </div>\n\n                  <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n                      <span class=\"sr-only\">Toggle navigation</span>\n                      <span class=\"icon-bar\"></span>\n                      <span class=\"icon-bar\"></span>\n                      <span class=\"icon-bar\"></span>\n                  </button>\n                  <div class=\"col-lg-2\">\n                      <a href=\"/#/\" class=\"navbar-brand\">\n                          <div>\n                              <img class=\"logo\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"src":("logo")}, hashTypes:{"src":"STRING"}, hashContexts:{"src":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("/>\n                          </div>\n                      </a>\n                  </div>\n              </header>\n\n\n              <div class=\"topnav\">\n\n                  <div class=\"btn-toolbar\">\n                     ");
+        stack1 = helpers["if"].call(depth0, "hasLoaded", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(2, program2, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n                  </div>\n\n              </div>\n\n\n\n              <!-- /.topnav -->\n\n              <div class=\"navbar-collapse navbar-ex1-collapse collapse\">\n                  <!-- .nav -->\n                  <ul class=\"nav highres navbar-nav text-center\">\n                      <!--\n                      <li>\n                          <a data-placement=\"bottom\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "menu1", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push(">\n                              Menu1\n                          </a>\n                      </li>\n                      -->\n                      <!--\n                      <li class=\"row col-lg-3\">\n                          <a data-parent=\"#menu\" data-toggle=\"collapse\" class=\"accordion-toggle collapsed col-lg-2\" data-target=\"#dashboard-top-nav\">\n                                Menu2\n                                <i class=\"icon-angle-down\"></i>\n                          </a>\n                      </li>\n                      <ul class=\"collapse col-lg-4\" id=\"dashboard-top-nav\" style=\"top:40px;height:100px\">\n                      <li class=\"\">\n                          <a id='dashboards_servers_leftmenu' class=\"pointer\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "goto", "serversinfo.index", "context", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0, depth0, depth0], types:["ID", "STRING", "ID"], data:data})));
+        data.buffer.push("><i class=\"icon-angle-right\"></i> Servers</a>\n                      </li>\n                      <li class=\"\">\n                          <a class=\"pointer\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "goto", "databases", "context", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0, depth0, depth0], types:["ID", "STRING", "ID"], data:data})));
+        data.buffer.push("><i class=\"icon-angle-right\"></i> Database Activity</a>\n                      </li>\n                      <li class=\"\">\n                        <br/>\n                      </li>\n                    </ul>\n                  -->\n\n                  </ul>\n\n\n                  <ul class=\"nav smalldeviceonly navbar-nav text-center\">\n                      <li>\n                          <a data-placement=\"bottom\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "logout", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push(">\n                              Logout\n                          </a>\n                      </li>\n                  </ul>\n                  <!-- /.nav -->\n              </div>\n\n\n              <div class=\"head col-lg-12\">\n                  ");
+        data.buffer.push(escapeExpression((helper = helpers["topbar-view"] || (depth0 && depth0["topbar-view"]), options = {hash:{"template_nameBinding":("controller.topbarView"), "contentBinding":("topbarModel"), "topbarTemplateBinding":("controller.topbarTemplate"), "elementId":("topMenu")}, hashTypes:{"template_nameBinding":"STRING", "contentBinding":"STRING", "topbarTemplateBinding":"STRING", "elementId":"STRING"}, hashContexts:{"template_nameBinding":depth0, "contentBinding":depth0, "topbarTemplateBinding":depth0, "elementId":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "topbar-view", options))));
+        data.buffer.push("\n\n                  \n\n              </div>\n              <!-- /.head -->\n          </nav>\n          <!-- /.navbar -->\n      </div>\n      <!-- /#top -->\n\n      <div id=\"left\" class=\"padTop50\">\n          <!-- #menu -->\n          <ul id=\"menu\" class=\"collapse affix\">\n            ");
+        stack1 = helpers["if"].call(depth0, "hasLoaded", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(4, program4, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n          </ul>\n          <!-- /#menu -->\n      </div>\n      <!-- /#left -->\n\n      <div id=\"content\">\n          <div class=\"outer\">\n              <div id=\"innercontent\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"class":(":inner selectedProject:havetopbar:notopbar")}, hashTypes:{"class":"STRING"}, hashContexts:{"class":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" style=\"height:800px\">\n                  <div class=\"col-lg-12\" >\n                      <div id=\"outletcontent\">\n                          <div class=\"container-fluid col-lg-12\">\n                              <div class=\"row row-fluid\">\n                                     ");
+        stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n                              </div>\n                          </div>\n                      </div>\n                      <div id=\"lastElement\">&nbsp;</div>\n                  </div>\n              </div>\n              <!-- end .inner -->\n          </div>\n          <!-- end .outer -->\n      </div>\n      <!-- end #content -->\n </div>\n <!-- /#wrap -->\n");
+        return buffer;
+    }
+    function program2(depth0, data) {
+        var buffer = "", stack1;
+        data.buffer.push("\n                          <!--\n                              <div class=\"btn-group\">\n                                  <a data-placement=\"bottom\" data-original-title=\"Show / Hide Sidebar\" data-toggle=\"tooltip\" class=\"btn btn-success btn-sm\" id=\"changeSidebarPos\">\n                                      <i class=\"icon-resize-horizontal\"></i>\n                                  </a>\n                              </div>\n                          -->\n\n                          <ul class=\"nav navbar-nav\">\n                              <li><div class=\"whitetext\" disabled>");
+        stack1 = helpers._triageMustache.call(depth0, "account.email", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("</div></li>\n                          </ul>\n\n                          <div class=\"btn-group\">\n                              <a data-toggle=\"tooltip\" data-original-title=\"Logout\" data-placement=\"bottom\" class=\"btn btn-metis-5 btn-sm\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "logout", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push(" >\n                                  <i class=\"fa fa-2x fa-sign-out\"></i>\n                              </a>\n                          </div>\n                     ");
+        return buffer;
+    }
+    function program4(depth0, data) {
+        var buffer = "", helper, options;
+        data.buffer.push("\n                <li class=\"nav-header\">Menu</li>\n                <li class=\"nav-divider\"></li>\n\n                ");
+        data.buffer.push(escapeExpression((helper = helpers["leftmenu-view"] || (depth0 && depth0["leftmenu-view"]), options = {hash:{"template_nameBinding":("controller.leftmenuTemplate"), "modelBinding":("controller.leftmenuModel"), "elementId":("leftMenu")}, hashTypes:{"template_nameBinding":"STRING", "modelBinding":"STRING", "elementId":"STRING"}, hashContexts:{"template_nameBinding":depth0, "modelBinding":depth0, "elementId":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "leftmenu-view", options))));
+        data.buffer.push("\n\n\n            ");
+        return buffer;
+    }
+    data.buffer.push("<!-- THIS IS THE APPLICATION, By Default we just include a container which is fluid... -->\n<!-- THE JS Will include the proper routing inside the ember outlet -->\n<div class=\"container-fluid\">\n\n <div id=\"hidTransparentDiv\"  class=\"visible\" style=\"background-color:trasnparent;width:100%;height:100%;z-index:3000;position:fixed;top:0px;left:0px;opacity:0.0;filter:alpha(opacity=0); /* For IE8 and earlier */\"></div>\n <div id=\"hidDiv\"  class=\"visible\" style=\"background-color:grey;width:100%;height:100%;z-index:3000;position:fixed;top:0px;left:0px;opacity:0.4;filter:alpha(opacity=40); /* For IE8 and earlier */\"></div>\n <div id=\"hidImg\" class=\"visible\" style=\"z-index:3001;position:fixed;top:40%;left:50%;\"><img src=\"/assets/images/loading.gif\"></div>\n\n");
+    stack1 = helpers["if"].call(depth0, "hasLoaded", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n <!-- #helpModal -->\n <div id=\"helpModal\" class=\"modal fade\">\n    <div class=\"modal-dialog\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n                <h4 class=\"modal-title\"></h4>\n            </div>\n            <div class=\"modal-body\">\n                <p>\n                </p>\n            </div>\n            <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n            </div>\n        </div><!-- /.modal-content -->\n    </div><!-- /.modal-dialog -->\n </div><!-- /.modal -->\n <!-- /#helpModal -->\n\n\n <div id=\"footer\">\n     <p>2013 &copy; ACenterA</p>\n </div>\n</div>\n\n\n\n");
+    return buffer;
+}

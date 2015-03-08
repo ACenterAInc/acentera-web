@@ -1,0 +1,146 @@
+
+
+<br/>
+{{#if-equal param1="archive" param2=content.status}}
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        We apologize but someone have deleted this server.
+        <br/>
+        <br/>
+        <br/>
+
+    </div>
+
+{{/if-equal}}
+
+{{#else-equal param1="archive" param2=content.status}}
+
+
+
+<br/>
+{{#if errorMsg}}
+    <div class="col-lg-2">
+    </div>
+    <div class="alert alert-danger col-lg-8">
+        <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+        <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+    </div>
+{{else}}
+    <div class="alert">&nbsp;</div>
+{{/if}}
+
+
+
+
+{{#else-equal param1=content.status param2="off"}}
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        {{#if type}}
+            Fast-Resize
+            <br/><br/>
+            This is not enabled from here for managed servers since it would cause downtime.
+            <br/><br/>
+            Please use an operations from the proper manage section ie: "Database"
+            <br/>
+            If you have any questions, feel free to create a support ticket.
+            <br/>
+            Regards,
+            The ACenterA Team.
+        {{else}}
+            Fast-Resize
+            <br/><br/>
+            Will allocate the upgraded RAM and Cores for your virtual server without making any disk size changes. 1 Minute downtime.
+            <br/><br/>
+            Please poweroff your server from the command line first before initiating a resize.
+            <br/><br/>
+
+            {{passwordconfirm-view}}
+
+
+            <div class="row" style="float:right">
+
+                <a {{action powerOff}} class="mediumtopmargin btn btn-primary btn-lg" style="float:left" >Power Off</a>
+
+            </div>
+        {{/if}}
+
+    </div>
+
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+{{/else-equal}}
+
+{{#if-equal param1=content.status param2="off"}}
+   <div class="row col-lg-12 text-left">
+       <div class="row col-lg-3">
+           &nbsp;
+       </div>
+       <div class="row col-lg-6">
+        Fast-Resize
+        <br/><br/>
+        Will allocate the upgraded RAM and Cores for your virtual server without making any disk size changes. 1 Minute downtime.
+        <br/><br/>
+
+        Great lets do it!
+        <br/><br/>
+        After the resize is finished Boot it from the control panel: "Power" > "Power On"
+        <br/>
+        <br/>
+      </div>
+       <div class="row col-lg-3">
+           &nbsp;
+       </div>
+   </div>
+
+        <div class="row col-lg-12 text-center">
+            <div class="col-lg-2 ">&nbsp;</div>
+            <div class="col-lg-7 ">
+
+                {{doregionsize-view content="66" type="do"  currsizeBinding="content.size.id" selsizeBinding="selectedSize" availableSizesBinding="availableSize"}}
+
+                {{doregionsize-view content="63" type="do"  currsizeBinding="content.size.id" selsizeBinding="selectedSize" availableSizesBinding="availableSize"}}
+
+                {{doregionsize-view content="62" type="do"  currsizeBinding="content.size.id" selsizeBinding="selectedSize" availableSizesBinding="availableSize"}}
+            </div>
+            <div class="col-lg-3 ">&nbsp;</div>
+        </div>
+        <br/>
+        <div class="row col-lg-12  text-center">
+            <div class="col-lg-2 ">&nbsp;</div>
+            <div class="col-lg-7 ">
+                {{doregionsize-view content="64" type="do"  currsizeBinding="content.size.id" selsizeBinding="selectedSize" availableSizesBinding="availableSize"}}
+
+                {{doregionsize-view content="65" type="do"  currsizeBinding="content.size.id" selsizeBinding="selectedSize" availableSizesBinding="availableSize"}}
+
+                {{doregionsize-view content="61" type="do"  currsizeBinding="content.size.id" selsizeBinding="selectedSize" availableSizesBinding="availableSize"}}
+            </div>
+            <div class="col-lg-3 ">&nbsp;</div>
+        </div>
+
+       <div class="row col-lg-12  text-center">
+           <div class="col-lg-2 ">&nbsp;</div>
+           <div class="col-lg-7 ">
+                {{passwordconfirm-view}}
+           </div>
+       </div>
+
+       <div class="row col-lg-12  text-center">
+           <div class="col-lg-2 ">&nbsp;</div>
+           <div class="col-lg-5 " style="float:right">
+                   <a {{action resize}} class="mediumtopmargin btn btn-primary btn-lg" style="float:left" >Resize</a>
+           </div>
+       </div>
+
+{{/if-equal}}
+
+{{/else-equal}}

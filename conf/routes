@@ -2,15 +2,85 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
 
-#Example of an added route
-#POST    /api/project/:project_id/databases/:database_id/server/:server_id/destroyserver      controllers.MyController.destroyDatabaseSlaves(project_id: Long, database_id : Long, server_id : Long)
+# Admin pages..
+GET     /admin/                                    controllers.acentera.Admin.index()
 
-#An example of how to override a route
-#GET      /api/project/:project_id                       controllers.Project.getProjectById(project_id : Long)
+# Authentication & Recovery
+GET      /login                               controllers.acentera.Auth.login()
+GET      /logout                              controllers.acentera.Auth.logout()
+POST     /authenticate                        controllers.acentera.Auth.authenticate()
+GET      /validate/email/:email               controllers.acentera.Auth.validateEmail(email: String)
+POST     /createAccount/:email                controllers.acentera.Auth.createAccount(email: String)
+POST     /recoverByEmail                      controllers.acentera.Auth.recover()
+GET      /recoveremail                        controllers.acentera.Auth.recoverByEmail()
+POST     /recoveremail                        controllers.acentera.Auth.recoverByEmailUpdate()
 
-->      /                                               acentera.Routes
 
-GET     /assets/*file                                   controllers.Assets.at(path="/public", file)
+# Commet push...
+GET      /create                              controllers.acentera.CometJavaServlet.create()
+GET      /ajax/:seqId                         controllers.acentera.Comet.getMessages(dtid: String = "", seqId: Int)
+GET      /destroy/:desktopId                  controllers.acentera.CometJavaServlet.destroy(desktopId: String)
+GET      /destroy/                            controllers.acentera.CometJavaServlet.destroy(desktopId: String = "")
+GET      /destroy                             controllers.acentera.CometJavaServlet.destroy(desktopId: String = "")
 
+
+
+#API / Model Access
+GET      /api/account                                       controllers.acentera.Account.getAccount()
+PUT      /api/account                                       controllers.acentera.Account.updateAccount()
+
+GET      /api/project/:project_id                           controllers.acentera.Project.getProjectById(project_id : Long)
+DELETE   /api/project/:project_id                           controllers.acentera.Project.deleteProject(project_id : Long)
+GET      /api/projects                                      controllers.acentera.Project.getProjects()
+POST     /api/projects                                      controllers.acentera.Project.createProjects()
+POST     /api/project/:project_id/providers                 controllers.acentera.Project.addNewCloudProvider(project_id: Long)
+DELETE   /api/project/:project_id/provider/:provider_id     controllers.acentera.Project.deleteCloudProvider(project_id: Long, provider_id: Long)
+PUT      /api/project/:project_id/provider/:provider_id     controllers.acentera.Project.updateCloudProvider(project_id: Long, provider_id: Long)
+
+POST     /api/project/:project_id/quotas                    controllers.acentera.Project.addNewProjectQuota(project_id: Long)
+DELETE   /api/project/:project_id/quota/:quota_id           controllers.acentera.Project.deleteProjectQuota(project_id: Long, quota_id: Long)
+PUT      /api/project/:project_id/quota/:quota_id           controllers.acentera.Project.updateProjectQuota(project_id: Long, quota_id: Long)
+
+
+
+# TODO: Should be used for service account users that doesn't require invites...
+#POST    /api/project/:project_id/users                     controllers.acentera.Project.addProjectUser(project_id: Long)
+GET      /api/project/:project_id/user/:user_id             controllers.acentera.Project.getProjectUserDetails(project_id: Long, user_id: Long)
+DELETE   /api/project/:project_id/user/:user_id             controllers.acentera.Project.deleteProjectUser(project_id: Long, user_id: Long)
+PUT      /api/project/:project_id/user/:user_id             controllers.acentera.Project.updateProjectUser(project_id: Long, user_id: Long)
+
+POST     /api/project/:project_id/invites                   controllers.acentera.Project.inviteProjectUser(project_id: Long)
+POST     /api/project/:project_id/invite/:invite_id                   controllers.acentera.Project.inviteResponseProjectUser(project_id: Long, invite_id: String)
+
+
+GET      /api/project/:project_id/servers                                                   controllers.acentera.Project.getProjectServers(project_id: Long)
+GET      /api/project/:project_id/server/:provider_name/:server_id                          controllers.acentera.Project.getProjectServerDetails(project_id: Long, provider_name: String, server_id: Long)
+GET      /api/project/:project_id/server/:server_id                                         controllers.acentera.Project.getProjectServerInfo(project_id: Long, server_id: Long)
+
+GET      /api/project/:project_id/key/:provider_id/images                                   controllers.acentera.Project.getProjectProviderImages(project_id: Long, provider_id: Long)
+
+#Create project SSH Keys
+POST     /api/project/:project_id/sshkeys                                                   controllers.acentera.Project.addProjectSshKey(project_id: Long)
+DELETE   /api/project/:project_id/sshkey/:sshkey_id                                         controllers.acentera.Project.deleteProjectSshKey(project_id: Long, sshkey_id: Long)
+PUT      /api/project/:project_id/sshkey/:sshkey_id                                         controllers.acentera.Project.updateProjectSshKey(project_id: Long, sshkey_id: Long)
+
+
+POST     /api/project/:project_id/servers/create                                            controllers.acentera.Project.createProjectServer(project_id: Long)
+GET      /api/project/:project_id/task/:task_id                                             controllers.acentera.Project.getProjectTaskStatus(project_id: Long, task_id: Long)
+
+
+#Server stop start resize..
+POST     /api/project/:project_id/server/:server_id/shutdown                                                  controllers.acentera.Server.shutdownServer(project_id: Long, server_id: Long)
+POST     /api/project/:project_id/server/:server_id/poweron                                                   controllers.acentera.Server.poweronServer(project_id: Long, server_id: Long)
+POST     /api/project/:project_id/server/:server_id/restart                                                   controllers.acentera.Server.restartServer(project_id: Long, server_id: Long)
+POST     /api/project/:project_id/server/:server_id/resize                                                    controllers.acentera.Server.resizeServer(project_id: Long, server_id: Long)
+POST     /api/project/:project_id/server/:server_id/destroy                                                   controllers.acentera.Server.destroyServer(project_id: Long, server_id: Long)
+
+
+GET     /assets/*file                controllers.Assets.at(path="/public", file)
+
+
+#Catch All Rule
+GET     /                                    controllers.acentera.Application.index()
+GET     /*wholepath                          controllers.acentera.Application.indexWithPath(wholepath: String)

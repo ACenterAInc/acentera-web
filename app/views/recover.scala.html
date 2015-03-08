@@ -1,0 +1,49 @@
+@(token:String, tempToken: String)
+
+@main("ACenterA Portal", 0) {
+
+<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/magic.css")"/>
+<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")"/>
+<script src="@routes.Assets.at("javascripts/recover.js")" type="text/javascript"></script>
+
+<div class="container-fluid">
+
+    <div class="row row-fluid">
+        <div class="span4 offset4 text-center">
+            <img src="assets/images/logo.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="row row-fluid span4">
+
+    <div class="span4 offset4 text-center tab-content col-lg-12">
+        <div id="login" class="tab-pane active">
+            <form action="/recoveremail" method="POST" class="form-signin">
+	           <div id="register-alert-box" class="alert"></div>
+
+                 @if(tempToken != "") {
+
+                   <p class="text-center">Enter a new password.</p>
+                   <br>
+                       <input id="token" name="token" type="hidden" value="@token"/>
+                       <input id="new_token" name="token" type="hidden" value="@tempToken"/>
+                       <input id="regpassword" name="password" required="required" class="form-control" onblur="passwordValidate(this, $('#passwordsignup_confirm'))"  type="password"  placeholder="Enter a password (eg. A3g2#90$)"/>
+                   </p>
+                   <p>
+                       <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" class="form-control" onblur="passwordCompare(this, $('#regpassword')[0])" type="password" placeholder="Re-Enter your password." />
+                   </p>
+
+                   <button id="btnRegister" class="btn btn-lg btn-success btn-block" onclick=" event.preventDefault(); submitForm( $('#regpassword')[0], $('#passwordsignup_confirm')[0] )" type="nothing">Change Password & Sign in</button>
+                 } else {
+                   <p class="text-center">The selected token has been redeemed or does not exists.</p>
+                   <br/>
+                   <button id="btnRegister" class="btn btn-lg btn-success btn-block" onclick=" event.preventDefault(); document.location.href='/'" type="nothing">Login page</button>
+                 }
+            </form>
+        </div>
+    </div>
+</div>
+
+}
+

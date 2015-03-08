@@ -1,0 +1,207 @@
+
+<div class="row col-lg-12 hidden">
+    <br/>
+    {{#if errorMsg}}
+        <div class="alert alert-danger">
+            <strong>Error updating!</strong> {{errorMsg}}
+        </div>
+    {{else}}
+        {{#if accountUpdated}}
+            <div class="alert alert-info">
+                <strong>Saved!</strong> Your account information has been updated.
+            </div>
+        {{else}}
+        <div class="alert">
+        </div>
+        {{/if}}
+    {{/if}}
+</div>
+
+<div class="col-lg-12">
+    <div class="box">
+        <header>
+            <div class="icons"><i class="icon-ok"></i></div>
+            <h5>Account Information</h5>
+            <div class="toolbar">
+                <ul class="nav">
+                    <li>
+                        <div class="btn-group hide">
+                            <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse" href="#collapse3">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                            <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+        <div id="collapse3" class="accordion-body collapse in body">
+
+
+            {{#if accountMsg}}
+                <div class="alert alert-info">
+                    <strong>Saved!</strong> Your account has been updated.
+                </div>
+            {{else}}
+                <div class="alert">
+                </div>
+            {{/if}}
+
+            <form class="form-horizontal" id="inline-validate" novalidate="novalidate">
+                <div class="form-group">
+                    <label class="control-label col-lg-4">{{i18n "first_name"}}</label>
+
+                    <div class="col-lg-8">
+                        {{view App.NotEmptyTextField class="form-control col-lg-6" valueBinding="account.firstName" elementId="account_first_name"}}
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">{{i18n "last_name"}}</label>
+
+                    <div class="col-lg-8">
+                        {{view App.NotEmptyTextField class="form-control col-lg-6" valueBinding="account.lastName" elementId="account_last_name"}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">Company Name</label>
+
+                    <div class="col-lg-8">
+                        {{view App.OptionalTextField class="form-control col-lg-6" valueBinding="account.company" elementId="account_company"}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">E-mail ( Login username )</label>
+
+                    <div class="col-lg-8">
+                        {{view App.EmailTextField class="form-control col-lg-6" valueBinding="account.email" elementId="account_email"}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">Preferred Language</label>
+
+                    <div class="col-lg-3">
+                        {{view App.SelectTextField class="form-control col-lg-6" contentBinding="languages" valueBinding="account.lang" elementId="account_lang"}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">I Aggree to the ToS</label>
+
+                    <div class="col-lg-8">
+                        {{view templateName="MustBeCheckedField" name="agree" class="col-lg-2" checkedBinding="account.tosAccepted" valueBinding="true" elementId="billing_tosAgree"}}
+                    </div>
+                </div>
+
+
+
+                <div class="form-actions">
+                    <div style="height:35px">
+                        <div class="col-lg-10">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="submit" {{action cancelUserUpdateAccount}} value="Cancel" style="float:right" class="btn btn-default"/>
+                        </div>
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="submit" {{action updateUserAccount}} value="Save" style="float:right" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-lg-12">
+    <div class="box">
+        <header>
+            <div class="icons"><i class="icon-ok"></i></div>
+            <h5>Change Password</h5>
+            <div class="toolbar">
+                <ul class="nav">
+                    <li>
+                        <div class="btn-group hide">
+                            <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse" href="#collapse3">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                            <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+        <div id="collapse3" class="accordion-body collapse in body">
+            {{#if passworderrorMsg}}
+                <div class="alert alert-danger">
+                    <strong>Error updating!</strong> {{passworderrorMsg}}
+                </div>
+            {{else}}
+                {{#if passwordMsg}}
+                    <div class="alert alert-info">
+                        <strong>Saved!</strong> Your password has been updated.
+                    </div>
+                {{else}}
+                    <br/>
+                    <br/>
+                    <br/>
+                {{/if}}
+            {{/if}}
+            <form class="form-horizontal" id="inline-validate" novalidate="novalidate">
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">Current Password</label>
+
+                    <div class="col-lg-8">
+                        {{view App.NotEmptyTextField class="form-control col-lg-6" valueBinding="account.password_current" type="password" elementId="currentPassword"}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4">New Password</label>
+
+                    <div class="col-lg-8">
+                        {{view App.NotEmptyTextField class="form-control col-lg-6" valueBinding="account.password" type="password" elementId="newPassword"}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4">Confirm Password</label>
+
+                    <div class="col-lg-8">
+                        {{view App.NotEmptyEqualRefTextField class="form-control col-lg-6" refBinding="account.password" valueBinding="account.password_confirm" type="password" elementId="newConfirmPassword"}}
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div style="height:35px">
+                        <div class="col-lg-10">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="submit" {{action cancelUserPassword}} value="Cancel" style="float:right" class="btn btn-default">
+                        </div>
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="submit" {{action updateUserPassword}} value="Save" style="float:right" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

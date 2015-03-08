@@ -1,0 +1,97 @@
+body {
+   line-height:1
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: url("../images/pattern/brillant.png") repeat #444;
+}
+
+.tab-content {
+    border: 0px;
+}
+
+table th, table td { overflow: hidden; }
+
+.form-signin {
+    max-width: 330px;
+    height: 475px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin input[type="text"],
+.form-signin input[type="password"],
+.form-signin input[type="email"] :not(input[name='recaptcha_response_field']) {
+    position: relative;
+    font-size: 16px;
+    height: 45px;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin input[name='recaptcha_response_field'] {
+   height: 30px;
+}
+.form-signin input[type="text"]:focus,
+.form-signin input[type="password"]:focus,
+.form-signin input[type="email"]:focus  {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+p.error {
+    color: #c00;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px rgba(0,0,0,.1);
+}
+p.success {
+    color: #83BD41;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px rgba(0,0,0,.1);
+}
+.success {
+    border: 1px solid green!important;
+    background-image: url(../../assets/images/valid.png)!important;
+    background-color: rgb(255, 255, 255)!important;
+    background-position: 98% 50%!important;
+    background-repeat: no-repeat no-repeat!important;
+
+}
+
+.error {
+
+   border: 1px solid red!important;
+   background-image: url(../../assets/images/invalid.png)!important;
+   background-color: rgb(255, 255, 255)!important;
+   background-position: 98% 50%!important;
+   background-repeat: no-repeat no-repeat!important;
+
+}
+
+.recaptcha_table, #recaptcha_area tr, #recaptcha_area td, #recaptcha_area th {
+    line-height: 0;
+}
+
+#recaptcha_response_field {
+    line-height: 30px;
+}
+
+

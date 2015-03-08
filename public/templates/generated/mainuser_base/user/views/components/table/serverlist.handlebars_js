@@ -1,0 +1,15 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", escapeExpression = this.escapeExpression;
+    data.buffer.push("<div class=\"col-lg-12 mediumtopmargin\">\n    <div class=\"none\">\n        <div id=\"collapse4\" class=\"body\">\n            <table ");
+    data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"id":("view.tableId")}, hashTypes:{"id":"ID"}, hashContexts:{"id":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push(" ");
+    data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"height":("view.height")}, hashTypes:{"height":"ID"}, hashContexts:{"height":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push(" ");
+    data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"width":("100%")}, hashTypes:{"width":"STRING"}, hashContexts:{"width":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push(" class=\"table table-bordered sortableTable table-condensed table-hover table-striped\">\n                <thead>\n                <tr>\n                    <th>Id</th>\n                    <th>Name</th>\n                    <th>IP Address</th>\n                    <th>Status</th>\n                    <th>Memory</th>\n                    <th>Disks</th>\n                    <th>Provider</th>\n                    <th>Region</th>\n                    <th>Action</th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n");
+    return buffer;
+}

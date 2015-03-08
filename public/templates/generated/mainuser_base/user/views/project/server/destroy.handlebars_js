@@ -1,0 +1,69 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, escapeExpression = this.escapeExpression, helperMissing = helpers.helperMissing, self = this;
+    function program1(depth0, data) {
+        data.buffer.push("\n    <div class=\"col-lg-3\">\n        &nbsp;\n    </div>\n\n    <div class=\"col-lg-6\">\n\n        We apologize but someone have deleted this server.\n        <br/>\n        <br/>\n        <br/>\n\n    </div>\n\n");
+    }
+    function program3(depth0, data) {
+        var buffer = "", stack1;
+        data.buffer.push("\n\n    ");
+        stack1 = helpers["if"].call(depth0, "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.program(6, program6, data), fn:self.program(4, program4, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n\n    <div class=\"col-lg-3\">\n        &nbsp;\n    </div>\n\n    <div class=\"col-lg-6\">\n\n        ");
+        stack1 = helpers["if"].call(depth0, "type", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.program(10, program10, data), fn:self.program(8, program8, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n    </div>\n\n");
+        return buffer;
+    }
+    function program4(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n        <div class=\"col-lg-2\">\n        </div>\n        <div class=\"alert alert-danger col-lg-8\">\n            <button type=\"button\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "clear", "controller", "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0, depth0, depth0], types:["ID", "ID", "STRING"], data:data})));
+        data.buffer.push(" class=\"close\">\xd7</button>\n            <strong> ");
+        data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "error_alert_prefix", options) : helperMissing.call(depth0, "i18n", "error_alert_prefix", options))));
+        data.buffer.push("&nbsp;&nbsp;</strong>");
+        stack1 = helpers._triageMustache.call(depth0, "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n        </div>\n    ");
+        return buffer;
+    }
+    function program6(depth0, data) {
+        data.buffer.push("\n        <div class=\"alert\">&nbsp;</div>\n    ");
+    }
+    function program8(depth0, data) {
+        data.buffer.push("\n                <br/><br/><br/><br/><br/>\n                This is not enabled for managed servers from here, as it would cause downtime.\n                <br/><br/>\n                Please use an operations from the proper manage section ie: \"Database\"\n                <br/>\n                If you have any questions, feel free to create a support ticket.\n                <br/>\n                Regards,\n                The ACenterA Team.\n        ");
+    }
+    function program10(depth0, data) {
+        var buffer = "", stack1;
+        data.buffer.push("\n                <br/>\n                <br/>\n                <br/>\n                <div class=\"alert alert-warning\"><strong>Warning!</strong>&nbsp;&nbsp;This will destroy your server and all of its data.</div>\n                <br/>\n                <br/>\n                <br/>\n                <br/>\n                <p>We recommend that you ensure to have taken backups of your files.</p>\n                <br/>\n                Do you wish to proceed?\n                <br/>\n\n                ");
+        stack1 = helpers._triageMustache.call(depth0, "passwordconfirm-view", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n\n                <div class=\"row\" style=\"float:right\">\n                    <a ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "destroyServer", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push(" class=\"mediumtopmargin btn btn-primary btn-lg\" style=\"float:left\" >Destroy Server</a>\n                </div>\n        ");
+        return buffer;
+    }
+    data.buffer.push("\n<br/>\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("archive"), "param2":("content.status")}, hashTypes:{"param1":"STRING", "param2":"ID"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n");
+    stack1 = (helper = helpers["else-equal"] || (depth0 && depth0["else-equal"]), options = {hash:{"param1":("archive"), "param2":("content.status")}, hashTypes:{"param1":"STRING", "param2":"ID"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(3, program3, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "else-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n");
+    return buffer;
+}

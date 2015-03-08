@@ -1,0 +1,237 @@
+
+
+<div class="col-lg-12">
+    <div class="box">
+        <header>
+            <div class="icons"><i class="icon-ok"></i></div>
+            <h5>Users</h5>
+            <div class="toolbar">
+                <ul class="nav">
+                    <li>
+                        <div class="btn-group hide">
+                            <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse" href="#collapse3">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                            <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+        <div id="collapse3" class="accordion-body collapse in body">
+            {{#if errorMsg}}
+                <div class="alert alert-danger">
+                    <button type="button" class="close" {{action clear controller 'errorMsg'}}">×</button>
+                    <strong>Error updating!</strong> {{errorMsg}}
+                </div>
+            {{else}}
+                {{#if successMsg}}
+                    <div class="alert alert-info">
+                        <button type="button" class="close" {{action clear controller 'successMsg'}}">×</button>
+                        <strong>Saved!</strong> The new informations has been saved.
+                    </div>
+                {{else}}
+                    <div class="alert">
+                    &nbsp;
+                    </div>
+                {{/if}}
+            {{/if}}
+
+
+
+
+
+
+{{#if disable}}
+
+            This user is either disabled or have not been invited for this project.
+
+{{else}}
+
+            <form class="form-horizontal col-lg-12" id="inline-validate" novalidate="novalidate">
+
+                <table class="row smalltopmargin col-lg-8 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-2 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class="col-lg-6 text-left"></th>
+                    </thead>
+                    <tr>
+                        <td>
+                            {{i18n "email"}}
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            {{ReadOnly-TextField class="form-control col-lg-6" valueBinding="content.email" elementId="email"}}
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+
+                <div class="row">
+                <table class="row smalltopmargin col-lg-8 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-3 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class="col-lg-6 text-left"></th>
+                    <th class="col-lg-1 text-left"></th>
+                    <th class="text-left"></th>
+                    </thead>
+
+                    {{#if roles.length}}
+                        <tr>
+                            <td>
+                                {{i18n "roles"}}
+                            </td>
+                            <td>
+                                <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.user_roles"}} data-toggle="tooltip"></i>
+                            </td>
+
+                            {{#if roles}}
+                                {{!-- we only have 1 role possible for now --}}
+                                {{#each v in roles}}
+                                    <td>
+                                        <div class="col-lg-7">
+                                            {{view App.ReadOnlyTextField class="form-control" valueBinding="v.name"}}
+                                        </div>
+                                        <div class="col-lg-1">
+                                            {{#if notCurrentUser}}
+                                                <button {{action removeRole v}} {{bind-attr-i18n data-original-title="project.remove_roles"}} data-toggle="tooltip" >-</button>
+                                            {{/if}}
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                {{/each}}
+                            {{/if}}
+                        </tr>
+                    {{else}}
+                        <tr>
+                            <td>
+                                {{i18n "roles"}}
+                            </td>
+                            <td>
+                                <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.user_roles"}} data-toggle="tooltip"></i>
+                            </td>
+
+                            <td>
+                                <div class="col-lg-7">
+                                    {{view App.SelectTextField class="form-control" contentBinding="roleList" valueBinding="new_role_value" elementId="new_role"}}
+                                </div>
+                                <div class="col-lg-1">
+                                    <button {{action removeLastRole}} {{bind-attr-i18n data-original-title="project.remove_roles"}} data-toggle="tooltip" >-</button>
+                                </div>
+                                <div class="col-lg-1">
+                                    <button {{action addMoreRoles}} {{bind-attr-i18n data-original-title="project.add_more_roles"}} data-toggle="tooltip">+</button>
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                            <td></td>
+
+                        </tr>
+                    {{/if}}
+                </table>
+                </div>
+
+               <div class="form-actions row col-lg-12">
+                <table class="row smalltopmargin col-lg-8 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-2 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class="col-lg-6 text-left"></th>
+                    </thead>
+                {{#if tags.length}}
+
+                    <tr>
+                        <td>
+                            {{i18n "Tags"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="quotas_tags_limit"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            <div class="col-lg-5">
+                                {{view App.EmptyNoSpaceTextField class="form-control col-lg-6" valueBinding="new_tag_value" elementId="new_tag"}}
+                            </div>
+                            <div class="col-lg-1">
+                                <button {{action removeLastTag}} {{bind-attr-i18n data-original-title="remove_tag"}} data-toggle="tooltip" >-</button>
+                            </div>
+                            <div class="col-lg-1">
+                                <button {{action addMoreTags}} {{bind-attr-i18n data-original-title="add_more_tag"}} data-toggle="tooltip">+</button>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    {{#each v in tags}}
+                        <tr>
+                            <td colspan="2"></td>
+                            <td>
+                                <div class="col-lg-5">
+                                    {{view App.ReadOnlyTextField class="form-control col-lg-6" valueBinding="v.name"}}
+                                </div>
+                                <div class="col-lg-1">
+                                    <button {{action removeTag v}} {{bind-attr-i18n data-original-title="remove_tag"}} data-toggle="tooltip" >-</button>
+                                </div>
+                            </td>
+                        </tr>
+                    {{/each}}
+
+
+
+                {{else}}
+
+                    <tr>
+                        <td>
+                            {{i18n "Tags (Quota/Groups)"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="quotas_tags_limit"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            <div class="col-lg-5">
+                                {{view App.EmptyNoSpaceTextField class="form-control col-lg-6" valueBinding="new_tag_value" elementId="new_tag"}}
+                            </div>
+                            <div class="col-lg-1">
+                                <button {{action removeLastTag}} {{bind-attr-i18n data-original-title="remove_tag"}} data-toggle="tooltip" >-</button>
+                            </div>
+                            <div class="col-lg-1">
+                                <button {{action addMoreTags}} {{bind-attr-i18n data-original-title="add_more_tag"}} data-toggle="tooltip">+</button>
+                            </div>
+
+                        </td>
+                    </tr>
+                {{/if}}
+                </table>
+              </div>
+
+
+                <div class="form-actions row col-lg-12 smalltopmargin">
+                    <div>
+                        <div class="col-lg-1">
+                            <input type="submit" {{action deleteRecord}} value="Delete" class="btn btn-danger">
+                        </div>
+                        <div class="col-lg-8">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-3 text-right">
+
+                            <input type="submit" {{action cancel}} value="Cancel" class="btn btn-default">
+
+                            <input type="submit" {{action update}} value="Save" class="btn btn-primary">
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+{{/if}}
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+
+
+<br/>
+{{#if-equal param1="archive" param2=content.status}}
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        We apologize but someone have deleted this server.
+        <br/>
+        <br/>
+        <br/>
+
+    </div>
+
+{{/if-equal}}
+
+{{#else-equal param1="archive" param2=content.status}}
+
+{{#if errorMsg}}
+    <div class="col-lg-2">
+    </div>
+    <div class="alert alert-danger col-lg-8">
+        <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+        <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+    </div>
+{{else}}
+    <div class="alert">&nbsp;</div>
+{{/if}}
+
+{{#if-equal param1=content.status param2="off"}}
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        Your server is currently offline.
+        <br/>
+        <br/>
+        <br/>
+        This will power on your server.
+        <br/>
+
+        <div class="form-group mediumtopmargin">
+            <label class="control-label col-lg-4">Password</label>
+
+            <div class="col-lg-8">
+                {{view App.NotEmptyTextField type="password" isValidOnFocusOutCallbackBinding="errorMsg" valueBinding="password" placeholder="Enter your password to confirm." class="passwordTextField" elementId="password"}}
+            </div>
+            <br/>
+        </div>
+
+        <a {{action powerOn}} class="mediumtopmargin btn btn-primary btn-lg" style="float:right" >Power On</a>
+
+    </div>
+
+{{/if-equal}}
+
+
+{{#else-equal param1=content.status param2="off"}}
+
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        Your server is currently powered on.
+        <br/>
+        <br/>
+        <br/>
+        {{#if type}}
+            <p>This will force a hard reboot of your server.</p>
+            <div class="alert alert-danger">
+                You should only use this as last resort as it could cause data corruptions.
+            </div>
+        {{else}}
+            <p>This will power off your server.</p>
+        {{/if}}
+        <br/>
+        <p>We recommend rebooting your droplet through the command line, as this action is the same as hard resetting the server and may cause data corruption.</p>
+        <br/>
+        Do you wish to proceed?
+        <br/>
+
+        {{passwordconfirm-view}}
+
+        <div class="row" style="float:right">
+            {{#if type}}
+                {{!-- disabled since its manage.. only let reboot --}}
+            {{else}}
+                <a {{action powerOff}} class="mediumtopmargin btn btn-primary btn-lg" style="float:left" >Power Off</a>
+            {{/if}}
+
+            <a {{action reboot}} class="leftmargin mediumtopmargin btn btn-default btn-lg" style="float:right" >Reboot</a>
+        </div>
+
+    </div>
+
+{{/else-equal}}
+
+{{/else-equal}}

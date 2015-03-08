@@ -1,0 +1,159 @@
+{{#if controllers.project}}
+{{#if controllers.project.ProjectAdmin}}
+    <div class="row col-lg-12">
+    <div class="col-lg-1">
+        <a id="add" class="btn btn-danger btn-lg"  data-target="#create" {{bind-attr-i18n data-original-title="project.invite_user_tooltip"}} data-toggle="collapse">
+            <i class="fa fa-plus"></i>
+            Invite User
+        </a>
+    </div>
+
+    <div class="col-lg-1">&nbsp;</div>
+    {{!--
+    <div class="col-lg-1">
+        <a id="add" class="btn btn-default btn-lg"  data-target="#createGroup" {{bind-attr-i18n data-original-title="project.create_group_tooltip"}} data-toggle="collapse">
+            <i class="fa fa-plus"></i>
+            Create Group
+        </a>
+    </div>
+    --}}
+    </div>
+
+    <div id="create" class="collapse text-grey mediumtopmargin">
+        <div class="row">
+            {{#if errorMsg}}
+                <div class="col-lg-2">
+                </div>
+                <div class="alert alert-danger col-lg-8">
+                    <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+                    <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+                </div>
+            {{else}}
+                <div class="alert">&nbsp;</div>
+            {{/if}}
+        </div>
+        <div class="row row-fluid col-lg-12">
+            <div class="row col-lg-8 text-center">
+                <table class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-2 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class=""></th>
+                    </thead>
+                    <tr>
+                        <td>
+                            {{i18n "project.invite_email"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.invite_email_tooltip"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            {{view App.EmailTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.invite_email_placeholder" valueBinding="invite_email" elementId="invite_email"}}
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="row smalltopmargin col-lg-12 text-grey smallleftpad text-center" >
+                    {{i18n "project.email_invite_text"}}
+                </div>
+
+                <div class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+
+                    <div class="form-actions row col-lg-12">
+                        <div class="col-lg-4">
+                            &nbsp;
+                        </div>
+                        <input {{action cancel}} type="button" class="btn btn-default"  data-target="#create" data-toggle="collapse" value="Cancel"/>
+
+                        <input  {{action add}} class="btn btn-primary" type="button" {{bind-attr-i18n value='project.send_invite'}}/>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    {{!--
+    <div id="createGroup" class="collapse text-grey mediumtopmargin">
+        <div class="row">
+            {{#if errorMsg}}
+                <div class="col-lg-2">
+                </div>
+                <div class="alert alert-danger col-lg-8">
+                    <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+                    <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+                </div>
+            {{else}}
+                <div class="alert">&nbsp;</div>
+            {{/if}}
+        </div>
+        <div class="row row-fluid col-lg-12">
+            <div class="row col-lg-8 text-center">
+                <table class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-2 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class=""></th>
+                    </thead>
+                    <tr>
+                        <td>
+                            {{i18n "project.invite_email"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.invite_email_tooltip"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            {{view App.EmailTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.invite_email_placeholder" valueBinding="invite_email" elementId="invite_email"}}
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="row smalltopmargin col-lg-12 text-grey smallleftpad text-center" >
+                    {{i18n "project.email_invite_text"}}
+                </div>
+
+                <div class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+
+                    <div class="form-actions row col-lg-12">
+                        <div class="col-lg-4">
+                            &nbsp;
+                        </div>
+                        <input {{action cancel}} type="button" class="btn btn-default"  data-target="#create" data-toggle="collapse" value="Cancel"/>
+
+                        <input  {{action add}} class="btn btn-primary" type="button" {{bind-attr-i18n value='project.send_invite'}}/>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    --}}
+
+
+    {{!--
+    <h2>Roles</h2>
+    <div class="mediumtopmargin">
+        {{iamrole-table dataBinding="roles" isLoaded=view.loaded tableId="roles_table" template_name="components/table/iamroletable" clickRoute="project/iam/roles"}}
+    </div>
+    --}}
+{{/if}}
+{{/if}}
+
+<h2>Users</h2>
+<div class="mediumtopmargin">
+    {{iamuser-table dataBinding="users" isLoaded=view.loaded tableId="users_table" template_name="components/table/iamuserstable" clickRoute="project/iam/useredit"}}
+</div>
+
+{{outlet}}
+
+

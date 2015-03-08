@@ -1,0 +1,76 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, self = this, helperMissing = helpers.helperMissing, escapeExpression = this.escapeExpression;
+    function program1(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n\n<div class=\"row col-lg-12\">\n    <div class=\"col-lg-1\">\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("a"), "class":("btn btn-danger btn-lg")}, hashTypes:{"tagName":"STRING", "class":"STRING"}, hashContexts:{"tagName":depth0, "class":depth0}, inverse:self.noop, fn:self.program(2, program2, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.server.create", options) : helperMissing.call(depth0, "link-to", "project.server.create", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n    </div>\n</div>\n\n<div class=\"mediumtopmargin\">\n    ");
+        data.buffer.push(escapeExpression((helper = helpers["servers-table"] || (depth0 && depth0["servers-table"]), options = {hash:{"dataBinding":("servers"), "isLoaded":("view.loaded"), "tableId":("servers_table"), "template_name":("components/table/serverstable"), "clickRoute":("project/servers/index")}, hashTypes:{"dataBinding":"STRING", "isLoaded":"ID", "tableId":"STRING", "template_name":"STRING", "clickRoute":"STRING"}, hashContexts:{"dataBinding":depth0, "isLoaded":depth0, "tableId":depth0, "template_name":depth0, "clickRoute":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "servers-table", options))));
+        data.buffer.push("\n</div>\n\n");
+        return buffer;
+    }
+    function program2(depth0, data) {
+        data.buffer.push("\n            <i class=\"fa fa-plus\"></i>\n            Create\n        ");
+    }
+    function program4(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n    <div class=\"row col-lg-12 text-center\">\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("a"), "class":("quick-btn")}, hashTypes:{"tagName":"STRING", "class":"STRING"}, hashContexts:{"tagName":depth0, "class":depth0}, inverse:self.noop, fn:self.program(5, program5, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.server.index", options) : helperMissing.call(depth0, "link-to", "project.server.index", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("a"), "class":("quick-btn")}, hashTypes:{"tagName":"STRING", "class":"STRING"}, hashContexts:{"tagName":depth0, "class":depth0}, inverse:self.noop, fn:self.program(7, program7, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.server.reboot", options) : helperMissing.call(depth0, "link-to", "project.server.reboot", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("a"), "class":("quick-btn")}, hashTypes:{"tagName":"STRING", "class":"STRING"}, hashContexts:{"tagName":depth0, "class":depth0}, inverse:self.noop, fn:self.program(9, program9, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.server.resize", options) : helperMissing.call(depth0, "link-to", "project.server.resize", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("a"), "class":("quick-btn")}, hashTypes:{"tagName":"STRING", "class":"STRING"}, hashContexts:{"tagName":depth0, "class":depth0}, inverse:self.noop, fn:self.program(11, program11, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.server.destroy", options) : helperMissing.call(depth0, "link-to", "project.server.destroy", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n    </div>\n\n");
+        return buffer;
+    }
+    function program5(depth0, data) {
+        data.buffer.push("\n            <i class=\"fa fa-info-circle fa-2x\"></i>\n            <span>Overview</span>\n        ");
+    }
+    function program7(depth0, data) {
+        data.buffer.push("\n            <i class=\"fa fa-power-off fa-2x\"></i>\n            <span>Power</span>\n        ");
+    }
+    function program9(depth0, data) {
+        data.buffer.push("\n            <i class=\"fa icon-resize-full fa-2x\"></i>\n            <span>Resize</span>\n        ");
+    }
+    function program11(depth0, data) {
+        data.buffer.push("\n            <i class=\"fa icon-remove fa-2x\"></i>\n            <span>Destroy</span>\n        ");
+    }
+    data.buffer.push("\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("controllers.application.currentPath"), "param2":("user.project.servers.index")}, hashTypes:{"param1":"ID", "param2":"STRING"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n");
+    stack1 = (helper = helpers["else-equal"] || (depth0 && depth0["else-equal"]), options = {hash:{"param1":("controllers.application.currentPath"), "param2":("user.project.servers.index")}, hashTypes:{"param1":"ID", "param2":"STRING"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(4, program4, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "else-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n");
+    stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n");
+    return buffer;
+}

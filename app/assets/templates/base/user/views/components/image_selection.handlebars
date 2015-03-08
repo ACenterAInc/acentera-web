@@ -1,0 +1,49 @@
+
+<div class="row col-lg-12 text-left">
+    <div class="col-lg-1 text-left"></div>
+    <div class="col-lg-5 text-center">
+        <h3>Select your OS</h3>
+    </div>
+</div>
+
+<div class="row col-lg-12 text-center">
+  {{#if distros}}
+    <div id="distributions">
+        {{#each distro in distros}}
+            <div class="distro">
+                {{#if distro.selected}}
+                    <a {{bind-attr class="distro.name"}} {{action selectDistro distro}}>
+                        {{distro.name}}
+                        <div class="icon selected"></div>
+                    </a>
+                {{else}}
+                    <a {{bind-attr class="distro.name"}} {{action selectDistro distro}}>
+                        {{distro.name}}
+                        <div class="icon"></div>
+                    </a>
+                {{/if}}
+            </div>
+        {{/each}}
+
+    </div>
+  {{/if}}
+</div>
+{{#if availableImages}}
+    <div class="row smallmargin">
+    {{#each img in availableImages}}
+            {{#if-equal param1=img.distribution param2=selectedDistro.name v=view.selectedImage.id}}
+                    {{#if-equal param1=img.id param2=view.v}}
+                        <div class="col-lg-3 btn btn-primary active smallmargin" {{action selectImage img}}>
+                            {{img.name}}<br/>
+                        </div>
+                    {{/if-equal}}
+                    {{#else-equal param1=img.id param2=view.v}}
+                        <div class="col-lg-3 btn btn-inverse-grey smallmargin" {{action selectImage img}}>
+                            {{img.name}}<br/>
+                        </div>
+                    {{/else-equal}}
+            {{/if-equal}}
+    {{/each}}
+    </div>
+{{/if}}
+

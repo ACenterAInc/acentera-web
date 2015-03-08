@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="com.acentera" module="acentera-emberjs" revision="1.0" status="release" publication="20150307181709" e:sbtVersion="0.13" e:scalaVersion="2.10">
+		<description homepage="http://www.acentera.com/">
+		SBT plugin for precompiling Ember.js assets in Play 2.3.0
+		</description>
+	</info>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		
+		
+		
+		
+		<conf name="sources" visibility="public" description=""/>
+		<conf name="docs" visibility="public" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		
+	</configurations>
+	<publications>
+		<artifact name="acentera-emberjs" type="pom" ext="pom" conf="pom"/>
+		<artifact name="acentera-emberjs" type="jar" ext="jar" conf="compile"/>
+		<artifact name="acentera-emberjs" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		<artifact name="acentera-emberjs" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+	</publications>
+	<dependencies>
+		
+		<dependency org="org.scala-lang" name="scala-library" rev="2.10.2" conf="provided->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt" rev="0.13.0" conf="provided->default(compile)"/>
+		<dependency org="com.typesafe.play" name="sbt-plugin" rev="2.3.8" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+	</dependencies>
+</ivy-module>

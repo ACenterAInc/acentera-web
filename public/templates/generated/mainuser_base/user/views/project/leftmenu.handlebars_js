@@ -1,0 +1,139 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, escapeExpression = this.escapeExpression, helperMissing = helpers.helperMissing, self = this;
+    function program1(depth0, data) {
+        var buffer = "", helper, options;
+        data.buffer.push("\n        <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>");
+        data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "leftmenu.project_list", options) : helperMissing.call(depth0, "i18n", "leftmenu.project_list", options))));
+        data.buffer.push("</a>\n    ");
+        return buffer;
+    }
+    function program3(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n\n        <div data-parent=\"#menu\" data-toggle=\"collapse\" class=\"btn-metis-5\" >\n            Dashboards\n                <span class=\"pull-right\">\n                <!--<i class=\"icon-angle-left\"></i>-->\n                    </span>\n        </div>\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(4, program4, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.index", options) : helperMissing.call(depth0, "link-to", "project.index", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        <div data-parent=\"#menu\" data-toggle=\"collapse\" class=\"btn-metis-5\" >\n            Settings\n        <span class=\"pull-right\">\n            <!--<i class=\"icon-angle-left\"></i>-->\n        </span>\n        </div>\n\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(6, program6, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.servers", options) : helperMissing.call(depth0, "link-to", "project.servers", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(8, program8, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.custom", options) : helperMissing.call(depth0, "link-to", "project.custom", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n\n    ");
+        return buffer;
+    }
+    function program4(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>Overview</a>\n        ");
+        return buffer;
+    }
+    function program6(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>Servers</a>\n        ");
+        return buffer;
+    }
+    function program8(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>Custom</a>\n        ");
+        return buffer;
+    }
+    function program10(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(11, program11, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.providers", options) : helperMissing.call(depth0, "link-to", "project.providers", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(13, program13, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.sshkeys", options) : helperMissing.call(depth0, "link-to", "project.sshkeys", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(15, program15, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.quotas", options) : helperMissing.call(depth0, "link-to", "project.quotas", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n\n        ");
+        stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(17, program17, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.iams", options) : helperMissing.call(depth0, "link-to", "project.iams", options));
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n    ");
+        return buffer;
+    }
+    function program11(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>Cloud Providers</a>\n        ");
+        return buffer;
+    }
+    function program13(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>SSH Keys</a>\n        ");
+        return buffer;
+    }
+    function program15(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>Quotas</a>\n        ");
+        return buffer;
+    }
+    function program17(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n            <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>IAM</a>\n        ");
+        return buffer;
+    }
+    function program19(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n        <a ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"href":("view.href")}, hashTypes:{"href":"STRING"}, hashContexts:{"href":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push("><i class=\"\"></i>Account</a>\n    ");
+        return buffer;
+    }
+    data.buffer.push("<div id=\"menu\">\n\n    ");
+    stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "main.index", options) : helperMissing.call(depth0, "link-to", "main.index", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n\n\n    ");
+    stack1 = helpers["if"].call(depth0, "view.model.isConfigured", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(3, program3, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n    <div data-parent=\"#menu\" data-toggle=\"collapse\" class=\"btn-metis-5\" >\n        Administration\n            <span class=\"pull-right\">\n                <!--<i class=\"icon-angle-left\"></i>-->\n            </span>\n    </div>\n\n    ");
+    stack1 = helpers["if"].call(depth0, "view.model.ProjectAdmin", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(10, program10, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n    ");
+    stack1 = (helper = helpers["link-to"] || (depth0 && depth0["link-to"]), options = {hash:{"tagName":("li")}, hashTypes:{"tagName":"STRING"}, hashContexts:{"tagName":depth0}, inverse:self.noop, fn:self.program(19, program19, data), contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.account", options) : helperMissing.call(depth0, "link-to", "project.account", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n</div>");
+    return buffer;
+}

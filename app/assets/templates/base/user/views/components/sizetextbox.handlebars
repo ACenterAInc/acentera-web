@@ -1,0 +1,120 @@
+
+{{#if-equal param1=view.size param2=66}}
+<span class="memory_and_cpu">
+                                <strong>512MB</strong>
+                                / 1 CPU
+                                </span>
+<span class="disk">
+                                <strong>20GB</strong>
+                                SSD Disk
+                                </span>
+<span class="bandwidth">
+                                <strong>1TB</strong>
+                                Transfer
+                                </span>
+{{/if-equal}}
+
+{{#if-equal param1=view.size param2=65}}
+<span class="memory_and_cpu">
+                                <strong>8GB</strong>
+                                / 4 CPU
+                                </span>
+<span class="disk">
+                                <strong>80GB</strong>
+                                SSD Disk
+                                </span>
+<span class="bandwidth">
+                                <strong>5TB</strong>
+                                Transfer
+                                </span>
+{{/if-equal}}
+
+
+{{#if-equal param1=view.size param2=64}}
+<span class="memory_and_cpu">
+                                <strong>4GB</strong>
+                                / 2 CPU
+                                </span>
+<span class="disk">
+                                <strong>60GB</strong>
+                                SSD Disk
+                                </span>
+<span class="bandwidth">
+                                <strong>4TB</strong>
+                                Transfer
+                                </span>
+{{/if-equal}}
+
+{{#if-equal param1=view.size param2=62}}
+
+<span class="memory_and_cpu">
+                                <strong>2GB</strong>
+                                / 2 CPU
+                                </span>
+<span class="disk">
+                                <strong>40GB</strong>
+                                SSD Disk
+                                </span>
+<span class="bandwidth">
+                                <strong>3TB</strong>
+                                Transfer
+                                </span>
+{{/if-equal}}
+
+
+
+
+{{#if-equal param1=view.size param2=63}}
+<span class="memory_and_cpu">
+                                    <strong>1GB</strong>
+                                    / 1 CPU
+                                    </span>
+<span class="disk">
+                                    <strong>30GB</strong>
+                                    SSD Disk
+                                    </span>
+<span class="bandwidth">
+                                    <strong>2TB</strong>
+                                    Transfer
+                                    </span>
+{{/if-equal}}
+
+
+
+
+{{#if-equal param1=view.size param2=61}}
+<span class="memory_and_cpu">
+                                    <strong>16GB</strong>
+                                    / 8 CPU
+                                    </span>
+<span class="disk">
+                                    <strong>160GB</strong>
+                                    SSD Disk
+                                    </span>
+<span class="bandwidth">
+                                    <strong>6TB</strong>
+                                    Transfer
+                                    </span>
+{{/if-equal}}
+
+<br>
+
+
+<table class="col-lg-12 text-center">
+    <tr>
+        <td>
+            <span class="period">Monthly</span>
+        </td>
+        <td>
+            <span class="period">Hourly</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="period">${{monthlyPricing}}</span>
+        </td>
+        <td>
+            <span class="period">${{hourlyPricing}}</span>
+        </td>
+    </tr>
+</table>

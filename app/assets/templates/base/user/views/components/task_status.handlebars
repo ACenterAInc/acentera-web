@@ -1,0 +1,55 @@
+{{#if-equal param1="100" param2=current_percentage}}
+
+    <div class="row col-lg-12 text-center mediumtopmargin">
+        All tasks are completed, you will be redirected shortly.<br/>
+        <br/>
+        <br/>
+
+    </div>
+
+{{/if-equal}}
+
+{{#else-equal  param1=100 param2=current_percentage}}
+
+    {{#else-equal param1="error" param2=content.action_status}}
+        <div id='status' class="row col-lg-12 text-center mediumtopmargin">
+
+                <div class="row col-lg-12 text-center">
+                    Please stand by while the process completes, <br/>
+                    <br/>you may close the window at any time the process will still complete.
+                    <br/>
+                    <br/>
+
+                </div>
+
+                <div id="statusready" class="row col-lg-12">
+                    <div class="progress progress-striped">
+                        {{!-- current_percentage %--}}
+                        <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" {{bindStyle width=current_percentage width-unit="%"}}>
+                        </div>
+                    </div>
+
+                    <div id="timer01" style="text-align:center">
+                    </div>
+                </div>
+        </div>
+    {{/else-equal}}
+
+    {{#if-equal param1="error" param2=content.action_status}}
+        <div id='statuserror' class="row col-lg-12 mediumtopmargin">
+
+            <div class="row col-lg-12 text-center">
+                Sorry, the operation have failed...
+                <br/>
+                <br/>
+                <br/>
+
+                {{#if showErrorGoBackButton}}
+                    <a {{action taskErrorGoBackClick}} class="btn btn-primary btn-lg">
+                        Go Back.
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+    {{/if-equal}}
+{{/else-equal}}

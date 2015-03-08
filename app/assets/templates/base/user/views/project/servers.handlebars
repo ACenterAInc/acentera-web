@@ -1,0 +1,49 @@
+
+{{#if-equal param1=controllers.application.currentPath param2="user.project.servers.index"}}
+
+<div class="row col-lg-12">
+    <div class="col-lg-1">
+        {{#link-to "project.server.create"  tagName="a" class="btn btn-danger btn-lg" }}
+            <i class="fa fa-plus"></i>
+            Create
+        {{/link-to}}
+    </div>
+</div>
+
+<div class="mediumtopmargin">
+    {{servers-table dataBinding="servers" isLoaded=view.loaded tableId="servers_table" template_name="components/table/serverstable" clickRoute="project/servers/index"}}
+</div>
+
+{{/if-equal}}
+
+
+{{#else-equal param1=controllers.application.currentPath param2="user.project.servers.index"}}
+    <div class="row col-lg-12 text-center">
+
+        {{#link-to "project.server.index" tagName="a" class="quick-btn"}}
+            <i class="fa fa-info-circle fa-2x"></i>
+            <span>Overview</span>
+        {{/link-to}}
+
+        {{#link-to "project.server.reboot" tagName="a" class="quick-btn"}}
+            <i class="fa fa-power-off fa-2x"></i>
+            <span>Power</span>
+        {{/link-to}}
+
+        {{#link-to "project.server.resize" tagName="a" class="quick-btn"}}
+            <i class="fa icon-resize-full fa-2x"></i>
+            <span>Resize</span>
+        {{/link-to}}
+
+        {{#link-to "project.server.destroy" tagName="a" class="quick-btn"}}
+            <i class="fa icon-remove fa-2x"></i>
+            <span>Destroy</span>
+        {{/link-to}}
+
+    </div>
+
+{{/else-equal}}
+
+
+{{outlet}}
+

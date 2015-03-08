@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="play-plugins-mailer_2.10-2.1-RC2.jar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/modules/acentera/lib/play-plugins-mailer_2.10-2.1-RC2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/play-plugins-mailer_2.10-2.1-RC2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

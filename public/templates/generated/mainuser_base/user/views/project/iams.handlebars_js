@@ -1,0 +1,73 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, escapeExpression = this.escapeExpression, helperMissing = helpers.helperMissing, self = this;
+    function program1(depth0, data) {
+        var buffer = "", stack1;
+        data.buffer.push("\n");
+        stack1 = helpers["if"].call(depth0, "controllers.project.ProjectAdmin", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(2, program2, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n");
+        return buffer;
+    }
+    function program2(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n    <div class=\"row col-lg-12\">\n    <div class=\"col-lg-1\">\n        <a id=\"add\" class=\"btn btn-danger btn-lg\"  data-target=\"#create\" ");
+        data.buffer.push(escapeExpression((helper = helpers["bind-attr-i18n"] || (depth0 && depth0["bind-attr-i18n"]), options = {hash:{"data-original-title":("project.invite_user_tooltip")}, hashTypes:{"data-original-title":"STRING"}, hashContexts:{"data-original-title":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bind-attr-i18n", options))));
+        data.buffer.push(" data-toggle=\"collapse\">\n            <i class=\"fa fa-plus\"></i>\n            Invite User\n        </a>\n    </div>\n\n    <div class=\"col-lg-1\">&nbsp;</div>\n    \n    </div>\n\n    <div id=\"create\" class=\"collapse text-grey mediumtopmargin\">\n        <div class=\"row\">\n            ");
+        stack1 = helpers["if"].call(depth0, "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.program(5, program5, data), fn:self.program(3, program3, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n        </div>\n        <div class=\"row row-fluid col-lg-12\">\n            <div class=\"row col-lg-8 text-center\">\n                <table class=\"row smalltopmargin col-lg-12 text-grey smallleftpad\" >\n                    <thead>\n                    <th class=\"row smalltopmargin col-lg-2 text-left\"></th>\n                    <th class=\"col-lg-1 text-right\"></th>\n                    <th class=\"\"></th>\n                    </thead>\n                    <tr>\n                        <td>\n                            ");
+        data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.invite_email", options) : helperMissing.call(depth0, "i18n", "project.invite_email", options))));
+        data.buffer.push("\n                        </td>\n                        <td>\n                            <i class=\"fa fa-question-circle\" ");
+        data.buffer.push(escapeExpression((helper = helpers["bind-attr-i18n"] || (depth0 && depth0["bind-attr-i18n"]), options = {hash:{"data-original-title":("project.invite_email_tooltip")}, hashTypes:{"data-original-title":"STRING"}, hashContexts:{"data-original-title":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bind-attr-i18n", options))));
+        data.buffer.push(" data-toggle=\"tooltip\"></i>\n                        </td>\n                        <td>\n                            ");
+        data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.EmailTextField", {hash:{"class":("form-control focus"), "isValidOnFocusOutFeedbackMsgBinding":("errorMsg"), "placeholderTranslate":("project.invite_email_placeholder"), "valueBinding":("invite_email"), "elementId":("invite_email")}, hashTypes:{"class":"STRING", "isValidOnFocusOutFeedbackMsgBinding":"STRING", "placeholderTranslate":"STRING", "valueBinding":"STRING", "elementId":"STRING"}, hashContexts:{"class":depth0, "isValidOnFocusOutFeedbackMsgBinding":depth0, "placeholderTranslate":depth0, "valueBinding":depth0, "elementId":depth0}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push("\n                        </td>\n                    </tr>\n                </table>\n\n                <div class=\"row smalltopmargin col-lg-12 text-grey smallleftpad text-center\" >\n                    ");
+        data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "project.email_invite_text", options) : helperMissing.call(depth0, "i18n", "project.email_invite_text", options))));
+        data.buffer.push("\n                </div>\n\n                <div class=\"row smalltopmargin col-lg-12 text-grey smallleftpad\" >\n\n                    <div class=\"form-actions row col-lg-12\">\n                        <div class=\"col-lg-4\">\n                            &nbsp;\n                        </div>\n                        <input ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancel", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push(" type=\"button\" class=\"btn btn-default\"  data-target=\"#create\" data-toggle=\"collapse\" value=\"Cancel\"/>\n\n                        <input  ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "add", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+        data.buffer.push(" class=\"btn btn-primary\" type=\"button\" ");
+        data.buffer.push(escapeExpression((helper = helpers["bind-attr-i18n"] || (depth0 && depth0["bind-attr-i18n"]), options = {hash:{"value":("project.send_invite")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bind-attr-i18n", options))));
+        data.buffer.push("/>\n                    </div>\n\n\n                </div>\n\n\n            </div>\n        </div>\n\n    </div>\n\n\n\n    \n\n\n    \n");
+        return buffer;
+    }
+    function program3(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n                <div class=\"col-lg-2\">\n                </div>\n                <div class=\"alert alert-danger col-lg-8\">\n                    <button type=\"button\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "clear", "controller", "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0, depth0, depth0], types:["ID", "ID", "STRING"], data:data})));
+        data.buffer.push(" class=\"close\">\xd7</button>\n                    <strong> ");
+        data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "error_alert_prefix", options) : helperMissing.call(depth0, "i18n", "error_alert_prefix", options))));
+        data.buffer.push("&nbsp;&nbsp;</strong>");
+        stack1 = helpers._triageMustache.call(depth0, "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n                </div>\n            ");
+        return buffer;
+    }
+    function program5(depth0, data) {
+        data.buffer.push("\n                <div class=\"alert\">&nbsp;</div>\n            ");
+    }
+    stack1 = helpers["if"].call(depth0, "controllers.project", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n<h2>Users</h2>\n<div class=\"mediumtopmargin\">\n    ");
+    data.buffer.push(escapeExpression((helper = helpers["iamuser-table"] || (depth0 && depth0["iamuser-table"]), options = {hash:{"dataBinding":("users"), "isLoaded":("view.loaded"), "tableId":("users_table"), "template_name":("components/table/iamuserstable"), "clickRoute":("project/iam/useredit")}, hashTypes:{"dataBinding":"STRING", "isLoaded":"ID", "tableId":"STRING", "template_name":"STRING", "clickRoute":"STRING"}, hashContexts:{"dataBinding":depth0, "isLoaded":depth0, "tableId":depth0, "template_name":depth0, "clickRoute":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "iamuser-table", options))));
+    data.buffer.push("\n</div>\n\n");
+    stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n");
+    return buffer;
+}

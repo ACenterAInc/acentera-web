@@ -1,0 +1,62 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, escapeExpression = this.escapeExpression, self = this, helperMissing = helpers.helperMissing;
+    function program1(depth0, data) {
+        var buffer = "", stack1;
+        data.buffer.push("\n                <div class=\"alert alert-danger\">\n                    <button type=\"button\" class=\"close\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "clear", "controller", "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0, depth0, depth0], types:["ID", "ID", "STRING"], data:data})));
+        data.buffer.push("\">\xd7</button>\n                    <strong>Error updating!</strong> ");
+        stack1 = helpers._triageMustache.call(depth0, "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n                </div>\n            ");
+        return buffer;
+    }
+    function program3(depth0, data) {
+        var buffer = "", stack1;
+        data.buffer.push("\n                ");
+        stack1 = helpers["if"].call(depth0, "successMsg", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.program(6, program6, data), fn:self.program(4, program4, data), contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n            ");
+        return buffer;
+    }
+    function program4(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n                    <div class=\"alert alert-info\">\n                        <button type=\"button\" class=\"close\" ");
+        data.buffer.push(escapeExpression(helpers.action.call(depth0, "clear", "controller", "successMsg", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0, depth0, depth0], types:["ID", "ID", "STRING"], data:data})));
+        data.buffer.push("\">\xd7</button>\n                        <strong>Saved!</strong> The new informations has been saved.\n                    </div>\n                ");
+        return buffer;
+    }
+    function program6(depth0, data) {
+        var buffer = "";
+        data.buffer.push("\n                    \n                ");
+        return buffer;
+    }
+    data.buffer.push("\n\n<div class=\"col-lg-12\">\n    <div class=\"box\">\n        <header>\n            <div class=\"icons\"><i class=\"icon-ok\"></i></div>\n            <h5>Quotas</h5>\n            <div class=\"toolbar\">\n                <ul class=\"nav\">\n                    <li>\n                        <div class=\"btn-group hide\">\n                            <a class=\"accordion-toggle btn btn-xs minimize-box\" data-toggle=\"collapse\" href=\"#collapse3\">\n                                <i class=\"icon-chevron-up\"></i>\n                            </a>\n                            <button class=\"btn btn-xs btn-danger close-box\"><i class=\"icon-remove\"></i></button>\n                        </div>\n                    </li>\n                </ul>\n            </div>\n\n        </header>\n        <div id=\"collapse3\" class=\"accordion-body collapse in body\">\n            ");
+    stack1 = helpers["if"].call(depth0, "errorMsg", {hash:{}, hashTypes:{}, hashContexts:{}, inverse:self.program(3, program3, data), fn:self.program(1, program1, data), contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n            <form class=\"form-horizontal col-lg-12\" id=\"inline-validate\" novalidate=\"novalidate\">\n\n                <div class=\"form-group\">\n                    <label class=\"control-label col-lg-4\">");
+    data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "quota.tag", options) : helperMissing.call(depth0, "i18n", "quota.tag", options))));
+    data.buffer.push("</label>\n\n                    <div class=\"col-lg-8\">\n                        ");
+    data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.NotEmptyNoSpaceTextField", {hash:{"class":("form-control col-lg-6"), "valueBinding":("content.name"), "elementId":("name")}, hashTypes:{"class":"STRING", "valueBinding":"STRING", "elementId":"STRING"}, hashContexts:{"class":depth0, "valueBinding":depth0, "elementId":depth0}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push("\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <label class=\"control-label col-lg-4\">\n                            ");
+    data.buffer.push(escapeExpression((helper = helpers.i18n || (depth0 && depth0.i18n), options = {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["STRING"], data:data}, helper ? helper.call(depth0, "quota.compute", options) : helperMissing.call(depth0, "i18n", "quota.compute", options))));
+    data.buffer.push("\n                    </label>\n\n                    <div class=\"col-lg-8\">\n                        ");
+    data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.NumberTextField", {hash:{"class":("form-control col-lg-6 focus"), "isValidOnFocusOutFeedbackMsgBinding":("errorMsg"), "valueBinding":("content.compute"), "check":("positiveOnly"), "elementId":("compute")}, hashTypes:{"class":"STRING", "isValidOnFocusOutFeedbackMsgBinding":"STRING", "valueBinding":"STRING", "check":"STRING", "elementId":"STRING"}, hashContexts:{"class":depth0, "isValidOnFocusOutFeedbackMsgBinding":depth0, "valueBinding":depth0, "check":depth0, "elementId":depth0}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push("\n                    </div>\n                </div>\n\n\n\n                <div class=\"form-actions row col-lg-12\">\n                    <div>\n                        <div class=\"col-lg-1\">\n                            <input type=\"submit\" ");
+    data.buffer.push(escapeExpression(helpers.action.call(depth0, "deleteRecord", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push(" value=\"Delete\" class=\"btn btn-danger\">\n                        </div>\n                        <div class=\"col-lg-8\">\n                            &nbsp;\n                        </div>\n                        <div class=\"col-lg-3 text-right\">\n\n                            <input type=\"submit\" ");
+    data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancel", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push(" value=\"Cancel\" class=\"btn btn-default\">\n\n                            <input type=\"submit\" ");
+    data.buffer.push(escapeExpression(helpers.action.call(depth0, "update", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push(" value=\"Save\" class=\"btn btn-primary\">\n\n                        </div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>");
+    return buffer;
+}

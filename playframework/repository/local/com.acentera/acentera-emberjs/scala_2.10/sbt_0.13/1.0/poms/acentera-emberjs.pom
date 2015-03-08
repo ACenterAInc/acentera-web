@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.acentera</groupId>
+    <artifactId>acentera-emberjs</artifactId>
+    <packaging>jar</packaging>
+    <description>SBT plugin for precompiling Ember.js assets in Play 2.3.0</description>
+    <url>http://www.acentera.com/</url>
+    <version>1.0</version>
+    <name>acentera-emberjs</name>
+    <organization>
+        <name>com.acentera</name>
+        <url>http://www.acentera.com/</url>
+    </organization>
+    <url>https://github.com/ACenterAInc/play-emberjs</url>
+    <licenses>
+        <license>
+            <name>BSD-style</name>
+            <url>http://www.opensource.org/licenses/bsd-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>git://github.com/ACenterAInc/play-emberjs.git</url>
+        <connection>scm:git:git@github.com:ACenterAInc/play-emberjs.git</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>ACenterA</id>
+            <name>Francis Lavalliere</name>
+            <url>https://github.com/ACenterA</url>
+        </developer>
+    </developers>
+    <properties>
+        <scalaVersion>2.10</scalaVersion>
+        <sbtVersion>0.13</sbtVersion>
+        <extraDependencyAttributes xml:space="preserve">+e:sbtVersion:#@#:+0.13:#@#:+module:#@#:+sbt-plugin:#@#:+e:scalaVersion:#@#:+2.10:#@#:+organisation:#@#:+com.typesafe.play:#@#:+branch:#@#:+@#:NULL:#@:#@#:+revision:#@#:+2.3.8:#@#:</extraDependencyAttributes>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.10.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-sbt</groupId>
+            <artifactId>sbt</artifactId>
+            <version>0.13.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>sbt-plugin</artifactId>
+            <version>2.3.8</version>
+        </dependency>
+    </dependencies>
+</project>

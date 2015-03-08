@@ -1,0 +1,30 @@
+
+<div class="row col-lg-12 text-left">
+    <div class="col-lg-1 text-left"></div>
+    <div class="col-lg-5 text-center">
+        <h3>Select a SSH Key</h3>
+    </div>
+</div>
+
+{{#if availableKeys}}
+    <div class="row smallmargin">
+
+    {{#each key in availableKeys}}
+            {{#if-equal param1=key.id param2=view.selectedKey.id}}
+                <div class="col-lg-3 btn btn-primary active smallmargin" {{action unselectKey key}}>
+                    {{key.name}}<br/>
+                </div>
+            {{/if-equal}}
+            {{#else-equal param1=key.id param2=view.selectedKey.id}}
+                <div class="col-lg-3 btn btn-inverse-grey smallmargin" {{action selectKey key}}>
+                    {{key.name}}<br/>
+                </div>
+            {{/else-equal}}
+    {{/each}}
+    </div>
+{{else}}
+    The root password will be sent by Email. <br/> <br/>
+    You may ask your administrator to add your public ssh key informations
+    <br/>
+{{/if}}
+

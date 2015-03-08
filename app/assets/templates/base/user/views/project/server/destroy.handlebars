@@ -1,0 +1,73 @@
+
+<br/>
+{{#if-equal param1="archive" param2=content.status}}
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        We apologize but someone have deleted this server.
+        <br/>
+        <br/>
+        <br/>
+
+    </div>
+
+{{/if-equal}}
+
+{{#else-equal param1="archive" param2=content.status}}
+
+    {{#if errorMsg}}
+        <div class="col-lg-2">
+        </div>
+        <div class="alert alert-danger col-lg-8">
+            <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+            <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+        </div>
+    {{else}}
+        <div class="alert">&nbsp;</div>
+    {{/if}}
+
+
+    <div class="col-lg-3">
+        &nbsp;
+    </div>
+
+    <div class="col-lg-6">
+
+        {{#if type}}
+                <br/><br/><br/><br/><br/>
+                This is not enabled for managed servers from here, as it would cause downtime.
+                <br/><br/>
+                Please use an operations from the proper manage section ie: "Database"
+                <br/>
+                If you have any questions, feel free to create a support ticket.
+                <br/>
+                Regards,
+                The ACenterA Team.
+        {{else}}
+                <br/>
+                <br/>
+                <br/>
+                <div class="alert alert-warning"><strong>Warning!</strong>&nbsp;&nbsp;This will destroy your server and all of its data.</div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <p>We recommend that you ensure to have taken backups of your files.</p>
+                <br/>
+                Do you wish to proceed?
+                <br/>
+
+                {{passwordconfirm-view}}
+
+
+                <div class="row" style="float:right">
+                    <a {{action destroyServer}} class="mediumtopmargin btn btn-primary btn-lg" style="float:left" >Destroy Server</a>
+                </div>
+        {{/if}}
+
+    </div>
+
+{{/else-equal}}

@@ -1,0 +1,189 @@
+<!-- THIS IS THE APPLICATION, By Default we just include a container which is fluid... -->
+<!-- THE JS Will include the proper routing inside the ember outlet -->
+<div class="container-fluid">
+
+ <div id="hidTransparentDiv"  class="visible" style="background-color:trasnparent;width:100%;height:100%;z-index:3000;position:fixed;top:0px;left:0px;opacity:0.0;filter:alpha(opacity=0); /* For IE8 and earlier */"></div>
+ <div id="hidDiv"  class="visible" style="background-color:grey;width:100%;height:100%;z-index:3000;position:fixed;top:0px;left:0px;opacity:0.4;filter:alpha(opacity=40); /* For IE8 and earlier */"></div>
+ <div id="hidImg" class="visible" style="z-index:3001;position:fixed;top:40%;left:50%;"><img src="/assets/images/loading.gif"></div>
+
+{{#if hasLoaded}}
+ <div id="wrap">
+     {{outlet modal}}
+      <div id="top">
+          <!-- .navbar -->
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <header class="navbar-header row col-lg-3">
+
+                  <div class="col-lg-6">
+                  </div>
+
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <div class="col-lg-2">
+                      <a href="/#/" class="navbar-brand">
+                          <div>
+                              <img class="logo" {{bind-attr src="logo"}}/>
+                          </div>
+                      </a>
+                  </div>
+              </header>
+
+
+              <div class="topnav">
+
+                  <div class="btn-toolbar">
+                     {{#if hasLoaded}}
+                          <!--
+                              <div class="btn-group">
+                                  <a data-placement="bottom" data-original-title="Show / Hide Sidebar" data-toggle="tooltip" class="btn btn-success btn-sm" id="changeSidebarPos">
+                                      <i class="icon-resize-horizontal"></i>
+                                  </a>
+                              </div>
+                          -->
+
+                          <ul class="nav navbar-nav">
+                              <li><div class="whitetext" disabled>{{account.email}}</div></li>
+                          </ul>
+
+                          <div class="btn-group">
+                              <a data-toggle="tooltip" data-original-title="Logout" data-placement="bottom" class="btn btn-metis-5 btn-sm" {{action logout}} >
+                                  <i class="fa fa-2x fa-sign-out"></i>
+                              </a>
+                          </div>
+                     {{/if}}
+                  </div>
+
+              </div>
+
+
+
+              <!-- /.topnav -->
+
+              <div class="navbar-collapse navbar-ex1-collapse collapse">
+                  <!-- .nav -->
+                  <ul class="nav highres navbar-nav text-center">
+                      <!--
+                      <li>
+                          <a data-placement="bottom" {{action menu1}}>
+                              Menu1
+                          </a>
+                      </li>
+                      -->
+                      <!--
+                      <li class="row col-lg-3">
+                          <a data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed col-lg-2" data-target="#dashboard-top-nav">
+                                Menu2
+                                <i class="icon-angle-down"></i>
+                          </a>
+                      </li>
+                      <ul class="collapse col-lg-4" id="dashboard-top-nav" style="top:40px;height:100px">
+                      <li class="">
+                          <a id='dashboards_servers_leftmenu' class="pointer" {{action goto "serversinfo.index" context}}><i class="icon-angle-right"></i> Servers</a>
+                      </li>
+                      <li class="">
+                          <a class="pointer" {{action goto "databases" context}}><i class="icon-angle-right"></i> Database Activity</a>
+                      </li>
+                      <li class="">
+                        <br/>
+                      </li>
+                    </ul>
+                  -->
+
+                  </ul>
+
+
+                  <ul class="nav smalldeviceonly navbar-nav text-center">
+                      <li>
+                          <a data-placement="bottom" {{action logout}}>
+                              Logout
+                          </a>
+                      </li>
+                  </ul>
+                  <!-- /.nav -->
+              </div>
+
+
+              <div class="head col-lg-12">
+                  {{topbar-view template_nameBinding="controller.topbarView" contentBinding="topbarModel" topbarTemplateBinding="controller.topbarTemplate" elementId="topMenu"}}
+
+                  {{!-- view templateName="topbar" elementId="topMenu" --}}
+
+              </div>
+              <!-- /.head -->
+          </nav>
+          <!-- /.navbar -->
+      </div>
+      <!-- /#top -->
+
+      <div id="left" class="padTop50">
+          <!-- #menu -->
+          <ul id="menu" class="collapse affix">
+            {{#if hasLoaded}}
+                <li class="nav-header">Menu</li>
+                <li class="nav-divider"></li>
+
+                {{leftmenu-view template_nameBinding="controller.leftmenuTemplate" modelBinding="controller.leftmenuModel" elementId="leftMenu"}}
+
+
+            {{/if}}
+          </ul>
+          <!-- /#menu -->
+      </div>
+      <!-- /#left -->
+
+      <div id="content">
+          <div class="outer">
+              <div id="innercontent" {{bind-attr class=":inner selectedProject:havetopbar:notopbar"}} style="height:800px">
+                  <div class="col-lg-12" >
+                      <div id="outletcontent">
+                          <div class="container-fluid col-lg-12">
+                              <div class="row row-fluid">
+                                     {{outlet}}
+                              </div>
+                          </div>
+                      </div>
+                      <div id="lastElement">&nbsp;</div>
+                  </div>
+              </div>
+              <!-- end .inner -->
+          </div>
+          <!-- end .outer -->
+      </div>
+      <!-- end #content -->
+ </div>
+ <!-- /#wrap -->
+{{/if}}
+
+ <!-- #helpModal -->
+ <div id="helpModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+ <!-- /#helpModal -->
+
+
+ <div id="footer">
+     <p>2013 &copy; ACenterA</p>
+ </div>
+</div>
+
+
+

@@ -1,0 +1,80 @@
+{{#if content.invitetoken}}
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-lg-12 text-center meidumtopmargin">
+        <div class="row col-lg-12">
+            Do you accept to join the following project ?
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="row col-lg-12 meidumtopmargin">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-3">
+
+                <a id="accept" {{action accept}}  class="btn btn-success btn-lg"  data-original-title="Accept Invitation" data-toggle="collapse">
+                    Accept
+                </a>
+
+            </div>
+            <div class="col-lg-3">
+
+                <a id="refuse" {{action reject}} class="btn btn-danger btn-lg"  data-original-title="Refuse Invitation" data-toggle="collapse">
+                    Refuse
+                </a>
+
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+    </div>
+
+
+{{else}}
+
+
+  {{#if content.isConfigured}}
+
+    Project Overview of {{content.name}}
+    <br/>
+    <br/>
+
+
+    <div class="text-center">
+
+        {{#link-to "project.servers.index" tagName="a" class="quick-btn"}}
+            <i class="fa fa-info-circle fa-2x"></i>
+            <span>Servers</span>
+        {{/link-to}}
+
+        {{#link-to "project.databases.index" tagName="a" class="quick-btn"}}
+            <i class="fa fa-info-circle fa-2x"></i>
+            <span>Databases</span>
+        {{/link-to}}
+
+    </div>
+  {{else}}
+
+    {{#if content.ProjectAdmin}}
+        {{i18n "project.admin_must_enable"}}
+    {{else}}
+        {{i18n "project.admin_project_must_configure"}}
+    {{/if}}
+
+  {{/if}}
+
+
+
+
+
+{{/if}}
+
+
+
+

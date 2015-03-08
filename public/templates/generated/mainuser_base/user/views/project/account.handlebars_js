@@ -1,0 +1,11 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", escapeExpression = this.escapeExpression;
+    data.buffer.push("<!--TODO: Add an API Key section\n\n<br/>A User could create its own Application Key's to be used. Potentially add keys too\n<br/>Add the user to which groups / level he's subscribed to for this project...\n\n-->\n<br/>\n\n\n\n\n");
+    data.buffer.push(escapeExpression(helpers.view.call(depth0, {hash:{"templateName":("main/account"), "controllerBinding":("controller"), "contentBinding":("controller.content"), "accountBinding":("controller.account")}, hashTypes:{"templateName":"STRING", "controllerBinding":"STRING", "contentBinding":"STRING", "accountBinding":"STRING"}, hashContexts:{"templateName":depth0, "controllerBinding":depth0, "contentBinding":depth0, "accountBinding":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push("\n\n");
+    return buffer;
+}

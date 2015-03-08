@@ -1,0 +1,67 @@
+
+{{#if errorMsg}}
+    <div class="row mediumtopmargin">
+        <div class="col-lg-2">
+        </div>
+        <div class="alert alert-danger col-lg-8">
+            <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+            <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+        </div>
+    </div>
+{{/if}}
+
+
+
+
+<div class="row mediumtopmargin">
+    <div class="col-lg-2 text-center">
+    </div>
+    <div class="col-lg-3 text-right">
+        <h2 class="text-primary">Hostname</h2>
+    </div>
+    <div class="col-lg-5 text-left">
+        {{view App.NotEmptyTextField type="text" value=shortHostName placeholder="Enter your desired short hostname" style="width: 100%;height: 40px;color: #428bca;border: 0px;border-bottom: dotted;border-bottom: aliceblu;" elementId="shortHostName"}}
+    </div>
+    <br/>
+    <br/>
+</div>
+
+
+
+{{providerselection-view selected_providerBinding="selected_provider"}}
+
+{{regionselection-view regionsAvailableBinding="regionsAvailable" slugBinding="slug"}}
+
+
+
+<div class="row mediumtopmargin">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-9">
+        {{regionsizeselection-view selectedSizeBinding="selected_size" availableSizeBinding="regionsSizeAvailable"}}
+        </div>
+</div>
+
+<div class="row col-lg-12 mediumtopmargin">
+
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9">
+        {{imageselection-view selectedImageBinding="selected_image" availableImagesBinding="availableImages" distroBinding="distros" selectedDistroBinding="selectedDistro"}}
+    </div>
+</div>
+
+
+<div class="row mediumtopmargin">
+
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9">
+        {{sshkeyselection-view selectedKeyBinding="selected_key" availableKeysBinding="availableKeys"}}
+    </div>
+
+</div>
+
+
+
+<div class="row mediumtopmargin">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 centered text-center btn btn-success" {{action createServer}}>Create Server</div>
+</div>

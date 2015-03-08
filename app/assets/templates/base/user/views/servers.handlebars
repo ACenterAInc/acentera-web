@@ -1,0 +1,22 @@
+
+
+<div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="centered col-lg-8 text-center">
+            {{#linkTo "project" tagName="a" class="quick-btn"}}
+                <i class="fa fa-plus fa-2x" data-original-title="Create a new server." data-toggle="tooltip"></i>
+                <span>New Server</span>
+            {{/linkTo}}
+
+    </div>
+
+</div>
+
+
+{{projectlist-table dataBinding="projects" isLoaded=view.loaded tableId="project_table" template_name="components/table/serverlist" clickRoute="project.index"}}
+
+
+
+
+

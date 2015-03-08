@@ -1,0 +1,10 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", escapeExpression = this.escapeExpression;
+    data.buffer.push(escapeExpression(helpers.view.call(depth0, {hash:{"templateName":("controller.leftmenuTemplate"), "topbarTemplateBinding":("view.topbarTemplate"), "hasLoadedBinding":("view.hasLoaded")}, hashTypes:{"templateName":"STRING", "topbarTemplateBinding":"ID", "hasLoadedBinding":"ID"}, hashContexts:{"templateName":depth0, "topbarTemplateBinding":depth0, "hasLoadedBinding":depth0}, contexts:[], types:[], data:data})));
+    data.buffer.push("\n");
+    return buffer;
+}

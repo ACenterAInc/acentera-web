@@ -1,2 +1,3 @@
 1500:com.typesafe.plugin.CommonsMailerPlugin
 5000:com.github.mumoshu.play2.memcached.MemcachedPlugin
+200:com.edulify.play.hikaricp.HikariCPPlugin

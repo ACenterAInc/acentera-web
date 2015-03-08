@@ -1,0 +1,127 @@
+@(title: String,isEmber: Int, mode : String = "dev", controllerType: String = "user", userTheme : String = "")(content: Html)
+
+<html>
+    <head>
+        <title>@title</title>
+
+        <script>
+            try {
+	            document.domain='acentera.com';
+            } catch (e) {
+            }
+        </script>
+
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")"/>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")"/>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="@routes.Assets.at("lib/html5shiv.js")"></script>
+        <script src="@routes.Assets.at("lib/respond.min.js")"></script>
+        <![endif]-->
+
+
+        <script src="@routes.Assets.at("lib/jquery/js/jquery-1.10.2.js")" type="text/javascript"></script>
+
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("lib/bootstrap/css/bootstrap.css")"/>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("lib/bootstrap/css/bootstrap-switch.css")"/>
+
+
+        <script src="@routes.Assets.at("javascripts/libs/handlebars.runtime.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/libs/ember-1.5.0.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/libs/ember-data.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/libs/md5.js")" type="text/javascript"></script>
+
+        @if(isEmber >= 1) {
+
+            <script src="@routes.Assets.at("javascripts/acentera.js")" type="text/javascript"></script>
+
+
+            <!-- we share model between admin and user -->
+            <script src="@routes.Assets.at("javascripts/libs/CLDR.js")" type="text/javascript"></script>
+                <!-- userTheme does not work yet 100%... yes you can override the theme but... you must duplicate everything which is bad, we whould either modify the Play Plugin or Ember.. -->
+                <!-- we would need to have a custom ember controller lookup to see if the theme controller or route doesn't exists, then load the one without the Theme Name... -->
+                <script>
+                    CLDR.defaultLocale = 'en';
+                    if (getTheme == undefined) {
+                        var getTheme = function() {
+                            return "";
+                        }
+                    }
+
+
+                    @if(mode == "prod") {
+                        var isProdMode = true;
+                        this.console = {error: function() {}, log: function() {}};
+
+                    } else {
+                        var isProdMode = false;
+                    }
+                </script>
+
+
+
+        <script src="@routes.Assets.at("templates/common/main/models/objects.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("templates/common/main/views/objects.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("templates/common/main/controllers/objects.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.at("templates/" + controllerType + "/main/models/objects.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("templates/" + controllerType + "/main/views/objects.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("templates/" + controllerType + "/main/controllers/objects.js")" type="text/javascript"></script>
+
+
+
+            <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")"/>
+            <link rel="stylesheet" href="@routes.Assets.at("stylesheets/slider.css")"/>
+            <link rel="stylesheet" href="@routes.Assets.at("stylesheets/phoca-flags.css")"/>
+            <link rel="stylesheet" href="@routes.Assets.at("lib/Font-Awesome/css/font-awesome.css")"/>
+            <link rel="stylesheet" href="@routes.Assets.at("stylesheets/font-awesome.min.css")"/>
+            <script src="@routes.Assets.at("lib/modernizr.js")"></script>
+            <script src="@routes.Assets.at("lib/bootstrap/js//bootstrap-datepicker.js")"></script>
+            <script src="@routes.Assets.at("lib/moment.min.js")"></script>
+
+            <script type="text/javascript" src="@routes.Assets.at("lib/jquery/js/jquery-ui.min.js")"></script>
+            <script type="text/javascript" src="@routes.Assets.at("lib/jquery/js/jquery.event.drag-2.2.js")"></script>
+            <script type="text/javascript" src="@routes.Assets.at("lib/jquery/js/jquery.mousewheel.min.js")"></script>
+
+            <script type="text/javascript" src="@routes.Assets.at("lib/tablesorter/js/jquery.tablesorter.min.js")"></script>
+            <script type="text/javascript" src="@routes.Assets.at("lib/jquery/js/jquery.tablesorter.pager.js")"></script>
+
+            <script src="@routes.Assets.at("lib/jquery/js/jquery.dataTables.min.js")"></script>
+            <script src="@routes.Assets.at("lib/jquery/js/jquery.dataTables.rowGrouping.js")"></script>
+            <script type="text/javascript" src="@routes.Assets.at("javascripts/date.js")"></script>
+            <link rel="stylesheet" href="@routes.Assets.at("lib/daterangepicker/daterangepicker-bs3.css")"/>
+            <link rel="stylesheet" href="@routes.Assets.at("lib/datepicker/css/datepicker.css")"/>
+            <link rel="stylesheet" href="@routes.Assets.at("lib/timepicker/css/bootstrap-timepicker.min.css")"/>
+
+            <script src="@routes.Assets.at("lib/bootstrap/js//bootstrap-slider.js")"></script>
+
+
+
+
+
+
+
+
+
+
+
+        }
+    </head>
+    <body class="col-lg-12">
+        @content
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="@routes.Assets.at("lib/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+
+
+
+    </body>
+
+
+</html>

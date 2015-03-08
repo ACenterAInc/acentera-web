@@ -1,0 +1,49 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, escapeExpression = this.escapeExpression, helperMissing = helpers.helperMissing, self = this;
+    function program1(depth0, data) {
+        data.buffer.push("\n    Archive..\n");
+    }
+    function program3(depth0, data) {
+        var buffer = "", stack1, helper, options;
+        data.buffer.push("\n\n<div class=\"col-lg-12\">\n    <div class=\"box dark\">\n        <header>\n            <div class=\"\"><i class=\"icon-none\"></i></div>\n            <h5>Server Informations</h5>\n        </header>\n        <div id=\"div-1\" class=\"accordion-body collapse in body\">\n            <div class=\"row\">\n\n                <div class=\"form-group\">\n\n                    <label class=\"control-label col-lg-4\">Status</label>\n\n                    <div class=\"col-lg-8\">\n                        <label ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"class":("alertClass")}, hashTypes:{"class":"STRING"}, hashContexts:{"class":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(">\n                            ");
+        stack1 = helpers._triageMustache.call(depth0, "content.status", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+        if (stack1 || stack1 === 0) {
+            data.buffer.push(stack1);
+        }
+        data.buffer.push("\n                        </label>\n                    </div>\n\n                    <label class=\"control-label col-lg-4\">Server Hostname</label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.name")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n\n\n                    <label class=\"control-label col-lg-4\">Memory <i class=\"hidden fa fa-question-circle tooltipasync\" style=\"cursor: help\"></i></label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.size.name")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n\n                    <label class=\"control-label col-lg-4\">Disk <i class=\"hidden  fa fa-question-circle tooltipasync\" style=\"cursor: help\"></i></label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.size.diskGb")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n\n\n                    <label class=\"control-label col-lg-4\">CPU</label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.size.cpu")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n\n\n\n\n                    <label class=\"control-label col-lg-4\">OS</label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.image_name")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n\n                    <label class=\"control-label col-lg-4\">IP Address</label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.ipAddress")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n                    <label class=\"control-label col-lg-4\">Private IP Address</label>\n\n                    <div class=\"col-lg-8\">\n                        <label class=\"form-control\">\n                            <input type=\"text\" class=\"noborder col-lg-12\" width=\"100%\" ");
+        data.buffer.push(escapeExpression(helpers["bind-attr"].call(depth0, {hash:{"value":("content.privateIpAddress")}, hashTypes:{"value":"STRING"}, hashContexts:{"value":depth0}, contexts:[], types:[], data:data})));
+        data.buffer.push(" readonly/>\n                        </label>\n                    </div>\n\n                    <label class=\"control-label col-lg-4\">Region</label>\n\n\n                    <div class=\"col-lg-8\">\n                        ");
+        data.buffer.push(escapeExpression((helper = helpers["regiontextbox-view"] || (depth0 && depth0["regiontextbox-view"]), options = {hash:{"slugBinding":("content.region_slug"), "region_nameBinding":("content.region_name")}, hashTypes:{"slugBinding":"STRING", "region_nameBinding":"STRING"}, hashContexts:{"slugBinding":depth0, "region_nameBinding":depth0}, contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "regiontextbox-view", options))));
+        data.buffer.push("\n                    </div>\n\n                    <!-- TODO: add group Tags ... -->\n                </div>\n            </div>\n\n        </div>\n\n    </div>\n</div>\n");
+        return buffer;
+    }
+    data.buffer.push("\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("archive"), "param2":("content.status")}, hashTypes:{"param1":"STRING", "param2":"STRING"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n");
+    stack1 = (helper = helpers["else-equal"] || (depth0 && depth0["else-equal"]), options = {hash:{"param1":("archive"), "param2":("content.status")}, hashTypes:{"param1":"STRING", "param2":"STRING"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(3, program3, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "else-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    return buffer;
+}

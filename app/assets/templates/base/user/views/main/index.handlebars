@@ -1,0 +1,42 @@
+
+{{!-- if-equal param1=projects.length param2=0}}
+    <a {{action createNewProject}}  class="btn btn-danger btn-lg"  data-original-title="Create your first project" data-toggle="tooltip">NEW PROJECT</a>
+    <!-- any nice images -->
+{{if-equal --}}
+
+<div class="col-lg-12">
+    {{#if projects.length}}
+        <a {{action createNewProject}}  class="btn btn-danger btn-lg"  {{bind-attr-i18n data-original-title="project.create_tooltip"}} data-toggle="tooltip">New Project</a>
+    {{else}}
+        <a {{action createNewProject}}  class="btn btn-danger btn-lg"  {{bind-attr-i18n data-original-title="project.create_first_tooltip"}} data-toggle="tooltip">Create Project</a>
+    {{/if}}
+    {{!--
+        <a {{action inportProject 'google'}}  class="btn btn-primary btn-lg"  data-original-title="Import a google project" data-toggle="tooltip">Import from Google</a>
+    --}}
+</div>
+
+
+
+<div {{bind-attr class=":mediumtopmargin projects.length:hidden:visible"}}>
+    Create your first project.
+</div>
+
+{{#if pendingInvites}}
+    <div class="mediumtopmargin">
+        <h2>You have pending invitations...</h2>
+
+        {{projectlist-table dataBinding="pendingInvites" type="pendingInvite" isLoaded=view.loaded tableId="project_invite_table" template_name="components/table/projectlist" clickRoute="project.index"}}
+
+    </div>
+{{/if}}
+
+{{#else-equal param1=projects.length param2=0}}
+    <div class="mediumtopmargin">
+
+        {{projectlist-table dataBinding="projects" type="accepted" isLoaded=view.loaded tableId="project_table" template_name="components/table/projectlist" clickRoute="project.index"}}
+    </div>
+
+{{/else-equal}}
+
+
+

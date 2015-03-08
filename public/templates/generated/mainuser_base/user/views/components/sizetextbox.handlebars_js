@@ -1,0 +1,67 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", stack1, helper, options, self = this, helperMissing = helpers.helperMissing;
+    function program1(depth0, data) {
+        data.buffer.push("\n<span class=\"memory_and_cpu\">\n                                <strong>512MB</strong>\n                                / 1 CPU\n                                </span>\n<span class=\"disk\">\n                                <strong>20GB</strong>\n                                SSD Disk\n                                </span>\n<span class=\"bandwidth\">\n                                <strong>1TB</strong>\n                                Transfer\n                                </span>\n");
+    }
+    function program3(depth0, data) {
+        data.buffer.push("\n<span class=\"memory_and_cpu\">\n                                <strong>8GB</strong>\n                                / 4 CPU\n                                </span>\n<span class=\"disk\">\n                                <strong>80GB</strong>\n                                SSD Disk\n                                </span>\n<span class=\"bandwidth\">\n                                <strong>5TB</strong>\n                                Transfer\n                                </span>\n");
+    }
+    function program5(depth0, data) {
+        data.buffer.push("\n<span class=\"memory_and_cpu\">\n                                <strong>4GB</strong>\n                                / 2 CPU\n                                </span>\n<span class=\"disk\">\n                                <strong>60GB</strong>\n                                SSD Disk\n                                </span>\n<span class=\"bandwidth\">\n                                <strong>4TB</strong>\n                                Transfer\n                                </span>\n");
+    }
+    function program7(depth0, data) {
+        data.buffer.push("\n\n<span class=\"memory_and_cpu\">\n                                <strong>2GB</strong>\n                                / 2 CPU\n                                </span>\n<span class=\"disk\">\n                                <strong>40GB</strong>\n                                SSD Disk\n                                </span>\n<span class=\"bandwidth\">\n                                <strong>3TB</strong>\n                                Transfer\n                                </span>\n");
+    }
+    function program9(depth0, data) {
+        data.buffer.push("\n<span class=\"memory_and_cpu\">\n                                    <strong>1GB</strong>\n                                    / 1 CPU\n                                    </span>\n<span class=\"disk\">\n                                    <strong>30GB</strong>\n                                    SSD Disk\n                                    </span>\n<span class=\"bandwidth\">\n                                    <strong>2TB</strong>\n                                    Transfer\n                                    </span>\n");
+    }
+    function program11(depth0, data) {
+        data.buffer.push("\n<span class=\"memory_and_cpu\">\n                                    <strong>16GB</strong>\n                                    / 8 CPU\n                                    </span>\n<span class=\"disk\">\n                                    <strong>160GB</strong>\n                                    SSD Disk\n                                    </span>\n<span class=\"bandwidth\">\n                                    <strong>6TB</strong>\n                                    Transfer\n                                    </span>\n");
+    }
+    data.buffer.push("\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("view.size"), "param2":(66)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(1, program1, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("view.size"), "param2":(65)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(3, program3, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("view.size"), "param2":(64)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(5, program5, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("view.size"), "param2":(62)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(7, program7, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n\n\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("view.size"), "param2":(63)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(9, program9, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n\n\n\n");
+    stack1 = (helper = helpers["if-equal"] || (depth0 && depth0["if-equal"]), options = {hash:{"param1":("view.size"), "param2":(61)}, hashTypes:{"param1":"ID", "param2":"INTEGER"}, hashContexts:{"param1":depth0, "param2":depth0}, inverse:self.noop, fn:self.program(11, program11, data), contexts:[], types:[], data:data}, helper ? helper.call(depth0, options) : helperMissing.call(depth0, "if-equal", options));
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("\n\n<br>\n\n\n<table class=\"col-lg-12 text-center\">\n    <tr>\n        <td>\n            <span class=\"period\">Monthly</span>\n        </td>\n        <td>\n            <span class=\"period\">Hourly</span>\n        </td>\n    </tr>\n    <tr>\n        <td>\n            <span class=\"period\">$");
+    stack1 = helpers._triageMustache.call(depth0, "monthlyPricing", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("</span>\n        </td>\n        <td>\n            <span class=\"period\">$");
+    stack1 = helpers._triageMustache.call(depth0, "hourlyPricing", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data});
+    if (stack1 || stack1 === 0) {
+        data.buffer.push(stack1);
+    }
+    data.buffer.push("</span>\n        </td>\n    </tr>\n</table>");
+    return buffer;
+}

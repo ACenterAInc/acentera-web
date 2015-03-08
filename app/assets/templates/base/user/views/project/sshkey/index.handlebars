@@ -1,0 +1,121 @@
+
+
+<div class="col-lg-12">
+    <div class="box">
+        <header>
+            <div class="icons"><i class="icon-ok"></i></div>
+            <h5>SSH Key</h5>
+            <div class="toolbar">
+                <ul class="nav">
+                    <li>
+                        <div class="btn-group hide">
+                            <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse" href="#collapse3">
+                                <i class="icon-chevron-up"></i>
+                            </a>
+                            <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+        <div id="collapse3" class="accordion-body collapse in body">
+            {{#if errorMsg}}
+                <div class="alert alert-danger">
+                    <button type="button" class="close" {{action clear controller 'errorMsg'}}">×</button>
+                    <strong>Error updating!</strong> {{errorMsg}}
+                </div>
+            {{else}}
+                {{#if successMsg}}
+                    <div class="alert alert-info">
+                        <button type="button" class="close" {{action clear controller 'successMsg'}}">×</button>
+                        <strong>Saved!</strong> The new informations has been saved.
+                    </div>
+                {{else}}
+                    <div class="alert">
+                    &nbsp;
+                    </div>
+                {{/if}}
+            {{/if}}
+            <form class="form-horizontal col-lg-12" id="inline-validate" novalidate="novalidate">
+
+                <table class="row smalltopmargin col-lg-8 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-2 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class="col-lg-6 text-left"></th>
+                    </thead>
+                    <tr>
+                        <td>
+                            {{i18n "name"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.create_name_tooltip"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            {{view App.NotEmptyTextField class="form-control col-lg-6" valueBinding="content.name"  elementId="name"}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            {{i18n "tag"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.create_tag_tooltip"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            {{view App.NotEmptyNoSpaceTextField class="form-control col-lg-6" valueBinding="content.tag"  elementId="tag"}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{i18n "public_key"}}
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            {{view App.NotEmptyTextField class="form-control col-lg-6" refBinding="content.publickey" valueBinding="content.publickey" elementId="publickey"}}
+                        </td>
+                    </tr>
+
+                </table>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">
+
+                        </label>
+
+                        <div class="col-lg-8">
+
+                        </div>
+                    </div>
+
+
+
+                {{#if canEditKey}}
+                    <div class="form-actions row col-lg-12">
+                        <div style="height:35px">
+                            <div class="col-lg-1">
+                                <input type="submit" {{action deleteRecord}} value="Delete" class="btn btn-danger">
+                            </div>
+                            <div class="col-lg-8">
+                                &nbsp;
+                            </div>
+                            <div class="col-lg-3 text-right">
+
+                                <input type="submit" {{action cancel}} value="Cancel" class="btn btn-default">
+
+                                <input type="submit" {{action update}} value="Save" class="btn btn-primary">
+
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+
+            </form>
+        </div>
+    </div>
+</div>

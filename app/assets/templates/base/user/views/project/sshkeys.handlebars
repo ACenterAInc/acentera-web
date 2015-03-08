@@ -1,0 +1,87 @@
+<a id="addKey" class="btn btn-danger btn-lg"  data-target="#createKey" data-original-title="Add a new SSH Key" data-toggle="collapse">
+    <i class="fa fa-plus"></i>
+    Add New Key
+</a>
+
+<div id="createKey" class="collapse text-grey mediumtopmargin">
+
+    {{#if errorMsg}}
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="alert alert-danger col-lg-8">
+                <button type="button" {{action clear controller 'errorMsg'}} class="close">×</button>
+                <strong> {{i18n "error_alert_prefix"}}&nbsp;&nbsp;</strong>{{errorMsg}}
+            </div>
+        </div>
+    {{else}}
+        <div class="alert">
+        </div>
+    {{/if}}
+
+
+    <div class="row row-fluid col-lg-12">
+        <div class="row col-lg-8 text-center">
+                <table class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+                    <thead>
+                    <th class="row smalltopmargin col-lg-2 text-left"></th>
+                    <th class="col-lg-1 text-right"></th>
+                    <th class="col-lg-7 text-left"></th>
+                    </thead>
+                    <tr>
+                        <td>
+                            {{i18n "name"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.create_key_tooltip"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            {{view App.NotEmptyTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.displayname_input_placeholder" valueBinding="new_key_name" elementId="new_key_name"}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{i18n "tag"}}
+                        </td>
+                        <td>
+                            <i class="fa fa-question-circle" {{bind-attr-i18n data-original-title="project.create_tag_tooltip"}} data-toggle="tooltip"></i>
+                        </td>
+                        <td>
+                            {{view App.NotEmptyNoSpaceTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.displaytag_input_placeholder" valueBinding="new_key_tag" elementId="new_key_tag"}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           {{i18n "public_key"}}
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            {{view App.NotEmptyTextField class="form-control focus" isValidOnFocusOutFeedbackMsgBinding="errorMsg" placeholderTranslate="project.publickey_input_placeholder" valueBinding="new_public_key" elementId="new_public_key"}}
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            <div class="row smalltopmargin col-lg-12 text-grey smallleftpad" >
+                <input {{action cancelNewKey}} type="button" class="btn btn-default"  data-target="#createKey" data-toggle="collapse" value="Cancel">
+                </input>
+                <input  {{action addNewKey}} class="btn btn-primary" type="button" value="Save">
+                </input>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="mediumtopmargin">
+    {{key-table dataBinding="sshkeys" isLoaded=view.loaded tableId="keys_table" template_name="components/table/keytable" clickRoute="project/sshkeys"}}
+</div>
+
+{{outlet}}
+
+
+
+

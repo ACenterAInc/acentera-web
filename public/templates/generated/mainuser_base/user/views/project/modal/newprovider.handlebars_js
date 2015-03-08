@@ -1,0 +1,13 @@
+
+function anonymous(Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, ">= 1.0.0"];
+    helpers = this.merge(helpers, Ember.Handlebars.helpers);
+    data = data || {};
+    var buffer = "", escapeExpression = this.escapeExpression;
+    data.buffer.push("<div class=\"col-lg-12\">\n    Enter project name :\n</div>\n\n<div class=\"col-lg-12 top15\">\n    ");
+    data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.NotEmptyTextField", {hash:{"class":("form-control focus"), "placeholder":("Enter a project name"), "elementId":("projectNameText")}, hashTypes:{"class":"STRING", "placeholder":"STRING", "elementId":"STRING"}, hashContexts:{"class":depth0, "placeholder":depth0, "elementId":depth0}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push("\n</div>\n\n\n<div class=\"row mediumtopmargin row-fluid col-lg-12\">\n    <div class=\"row col-lg-12 text-center\">\n        <div class=\"row col-lg-6 text-left\">\n            <div class=\"col-lg-5 text-grey\">\n                API / Access Key\n            </div>\n            <div class=\"col-lg-1 text-grey text-right\">\n                <i class=\"fa fa-question-circle\" data-original-title=\"Configure this project\" data-toggle=\"tooltip\"></i>\n            </div>\n            <div class=\"col-lg-6\">\n                <hr/>\n            </div>\n        </div>\n        <div class=\"col-lg-1 text-left\">\n            <a ");
+    data.buffer.push(escapeExpression(helpers.action.call(depth0, "showChangeAppName", {hash:{}, hashTypes:{}, hashContexts:{}, contexts:[depth0], types:["ID"], data:data})));
+    data.buffer.push(" href=\"#\">Edit</a>\n        </div>\n        <div class=\"col-lg-4\">\n        </div>\n        <br/>\n    </div>\n</div>\n\n\n");
+    return buffer;
+}
