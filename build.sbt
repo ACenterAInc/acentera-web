@@ -113,3 +113,6 @@ libraryDependencies ++= Seq(
     "com.fasterxml.jackson.core" % "jackson-annotations" % "2.4.3",
     "oauth.signpost" % "signpost-commonshttp4" % "1.2"
 )
+
+
+fork in run := true

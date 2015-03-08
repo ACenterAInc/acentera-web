@@ -28,17 +28,97 @@
     <p>
         <a href="http://www.emberjs.com/">EmberJS</a>
     </p>
+
+    <h2>Routing</h2>
+    
+    File is located into app/assets/base/{user,admin}/controllers/routes_xxxx.js
+
+    <pre><code>
+       
+App.Router.map(function() {
+      //Catch all Route
+      this.route( "blank", { path: "/blank"});
+      this.route( "404", { path: "*path"});
+
+
+      //entry point everything should be under index..
+      this.resource( "user",  { path: "/" }, function() {
+              this.resource("main",  { path: "/" }, function() {
+                  this.route("index",  { path: "/" });
+                  this.route("account",  { path: "/account" });
+
+              });
+
+              this.resource( 'project', { path: '/project/:project_id' }, function() {
+                   this.route('index', { path: '/' });
+              });
+      });
+
+
+});
+</code></pre>
+
+<p>
+    In this example, the default page for "/" is (user.main.index) which in our case will be located into the uesr root view folder inside of app/assets/templates/base/
+<br/>
+<br/>
+    The default views consists into the same folder structure ie : main/index.handlebars or for the /account path main.account.handlebars
+<br/>
+   
+    That view is loaded due to the {{outlet}} code inside the application.handlebars located into the user folder, or admin folder if you want to generate the admin pages.
+<br/>
+<br/>
+    Have a look at the application.handlebars which is the entry ponit of the webpage.
+<br/>
+</p>
+  
+
+    <h2>Re-Use of Views</h2>
+
+     In some case, you might want to re-use an existing view, in our case we wanted to use the same account.handlebars view, instead of duplicating the view. In order to do so in the project/account.handlebars we included the other view as reference. We could of done that using the controller also. We found it was easier to include it into an actual template, since we might want to do more things or extends the view.... by passing more parameters to display more informations.
+
+<pre>
+<code>
+{{view templateName="main/account" controllerBinding="controller" contentBinding="controller.content" accountBinding="controller.account"}}
+</code>
+</pre>
+<Br/>
+<Br/>
+If you want to learn more about EmberJS, I strongly suggest that you go throught Ember's documentation and tutorials. Good startng point -> http://emberjs.com/guides/
+<Br/>
+<Br/>
+<Br/>
+<Br/>
+    
 </div>
 
 <div>
     <h2>EmberJS ACenterA Implementation</h2>
     
     <p>
-    The EmberJS uses the play-emberjs plugin, which was modified a little bit and use our fork at <a href="https://github.com/ACenterAInc/play-emberjs">ACenterA Play-EmberJS</a>. Thanks for that original plugin, takes the various *.handlebars files and *.js from the following folders in that order
+    The EmberJS uses the play-emberjs plugin, which was modified a little bit and use our fork at <a href="https://github.com/ACenterAInc/play-emberjs">ACenterA Play-EmberJS</a>. Thanks for that original plugin.
+    <br/>
+    The original plugins, only generated 1 set of javascript files. For our case, we wanted to be able to have the same structure for multiple section of the website, in order to make it easier and smaller footprint.
+<br/>
+<br/>
+    Our versions takes the various *.handlebars files and *.js from the following folders and loads them. Everything into the common might be overwitten by the other sections
+<Br/>
+    Want to have a mobile section? Sure, all you have to do is to modify the build.sbt to include another set of folders see the current configuration :
+
+<pre>
+<code>
+   emberJsPrefix:= "main",
+   emberObjects := Seq( Seq("common","objects.js"),
+                        Seq("user","objects.js"),
+                        Seq("admin","objects.js")
+   ),
+
+</pre></code>
+<br/>
 
 <Br/>
 <Br/>
-Hierarchy
+Current loaded Hierarchy based on the emberObjects pattern
 
 <pre><code>
 
@@ -48,10 +128,10 @@ Hierarchy
 </code>
 </pre>
 
-The Javascript files generated generated are imported from following html file
+The Javascript files generated generated will be stored into your public/template/{common,user,admin}/{view,models,controllers}/objects.js and are loaded from the following scala file :
 
 <pre><code>
-    * modules/acentera/app/assets/views/main.scala.html
+    * modules/app/assets/views/main.scala.html
 </code></pre>
 </div>
 
@@ -65,7 +145,7 @@ Browser base Text Replacement this file could be migrated into /base/common/cont
 
 <pre><code>
 
-EmberJS i18n.js file is located at modules/acentera/app/assets/templates/base/user/controllers/i18n.js
+EmberJS i18n.js file is located at modules/app/assets/templates/base/user/controllers/i18n.js
 
 </code></pre>
 <br/>
@@ -73,7 +153,9 @@ Server-Base API Text Replacement
 
 <pre><code>
 
-The messages file is located at conf/messages or m
+The messages file is located at conf/messages and for other languages are conf/messages.fr (or .ru etc...)
+
+You need to make sure to add the langues into the conf/application.conf files ie: "en,fr,ru"
 
 </code></pre>
 

@@ -398,7 +398,7 @@ public class AnonymousSecurityController extends Action.Simple {
             }
             HibernateSessionFactory.closeSession();
         }
-        
+
         return NotAuthorized();
     }
 
